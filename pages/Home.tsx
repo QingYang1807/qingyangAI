@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/Button';
 import { Database, Network, Brain } from 'lucide-react';
 import { ALL_PROJECTS } from '../constants';
 import { Card } from '../components/ui/Card';
+import { Toast } from '../components/ui/Toast';
 
 interface HomeProps {
   onNavigate: (section: any) => void;
 }
 
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  const [showToast, setShowToast] = useState(false);
   const featuredProjects = ALL_PROJECTS.filter(p => p.featured).slice(0, 3);
+
+  const handleProjectClick = (link?: string) => {
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } else {
+      setShowToast(true);
+    }
+  };
 
   return (
     <div className="pt-32 pb-20">
+      <Toast 
+        message="Internal Enterprise Project - Not Publicly Available" 
+        isVisible={showToast} 
+        onClose={() => setShowToast(false)} 
+      />
+
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 text-center mb-32">
         <motion.div
@@ -86,7 +102,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {featuredProjects.map((work, idx) => (
-            <Card key={work.id} delay={idx * 0.1} className="flex flex-col h-full group cursor-pointer">
+            <Card 
+              key={work.id} 
+              delay={idx * 0.1} 
+              onClick={() => handleProjectClick(work.link)}
+              className="flex flex-col h-full group"
+            >
               <div className="aspect-video rounded-lg overflow-hidden bg-slate-100 mb-4 relative">
                  {work.image ? (
                    <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -97,7 +118,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     {work.category}
                  </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-qy-blue transition-colors">{work.title}</h3>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-qy-blue transition-colors flex items-center gap-2">
+                {work.title}
+                {work.link && <span className="text-slate-300 text-xs group-hover:text-qy-blue">↗</span>}
+              </h3>
               <p className="text-sm text-slate-500 leading-relaxed mt-2 line-clamp-3">{work.description}</p>
               
               <div className="mt-auto pt-4 flex flex-wrap gap-1">

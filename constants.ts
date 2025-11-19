@@ -143,6 +143,32 @@ export const ALL_PROJECTS: Project[] = [
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop'
   },
   {
+    id: 'datagov-platform',
+    slug: 'data-governance-platform',
+    title: '全生命周期数据治理平台',
+    category: 'Data Platform',
+    description: '覆盖元数据、标准、质量、安全的统一治理体系。',
+    longDescription: '负责企业级全生命周期治理平台核心模块研发。构建元数据管理、数据标准体系、全链路血缘分析、数据质量稽核与安全管控模块。实现元数据与业务系统自动打通，构建可视化血缘图谱，显著提升数据资产的透明度与合规性。',
+    technologies: ['Java', 'SpringBoot', 'ElasticSearch', 'Neo4j', 'ClickHouse'],
+    status: 'completed',
+    results: ['元数据追溯效率+90%', '安全合规扫描100%', '资产透明化'],
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'data-middle-platform',
+    slug: 'data-middle-platform',
+    title: '企业级数据中台',
+    category: 'Data Platform',
+    description: '数据中台底层架构重构与服务化建设。',
+    longDescription: '负责中台底层框架开发与微服务架构演进（前后端分离）。将数据治理能力（标准、模型、资产）深度集成至中台体系。实现数据资产地图搜索、资产健康度实时检测与异常预警机制，打通数据治理与业务场景的最后一公里。',
+    technologies: ['Java', 'SpringCloud', 'Kafka', 'Redis', 'Docker'],
+    status: 'completed',
+    results: ['数据使用效率+200%', '微服务架构重构', '资产异常预警'],
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
+  },
+  {
     id: 'chatbi',
     slug: 'chatbi-platform',
     title: 'ChatBI 智能数据平台',
@@ -154,7 +180,7 @@ export const ALL_PROJECTS: Project[] = [
     results: ['查询效率提升 5倍', 'NL2SQL准确率 95%'],
     link: 'https://chatbi.qingyang.ai',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 'toolbox',
@@ -169,18 +195,6 @@ export const ALL_PROJECTS: Project[] = [
     link: 'https://tools.qingyang.ai',
     featured: true,
     image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 'datagov',
-    slug: 'data-governance',
-    title: '数据治理与中台',
-    category: 'Data Platform',
-    description: '全生命周期数据治理与中台重构。',
-    longDescription: '负责数据中台底层框架研发与前后端分离重构。主导资产地图、血缘分析、敏感数据扫描。支撑 10+ 省市运营商落地，资产可发现性提升 80%+',
-    technologies: ['Java', 'SpringBoot', 'Kafka', 'Neo4j', 'Vue'],
-    status: 'completed',
-    results: ['资产发现性+80%', '合规扫描100%'],
-    featured: false
   }
 ];
 
