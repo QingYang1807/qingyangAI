@@ -77,7 +77,7 @@ export const ALL_PROJECTS: Project[] = [
   {
     id: 'resume',
     slug: 'qingyang-resume',
-    title: 'Qingyang Resume',
+    title: '简单简历（Easy-Resume）',
     category: 'Product',
     description: '轻松创建专业简历。极简设计，强大功能。',
     longDescription: '极简设计，强大功能。让简历制作变得简单高效。无需关注复杂排版，专注于内容创作，一键生成专业级 PDF 简历。',
@@ -91,7 +91,7 @@ export const ALL_PROJECTS: Project[] = [
   {
     id: 'brain',
     slug: 'qingyang-brain',
-    title: 'Qingyang Brain',
+    title: '清扬个人大脑（Qingyang Brain）',
     category: 'Product',
     description: 'AI 大脑产品。支持和 Gemini-Flash 实时问答。',
     longDescription: '基于 Google Gemini Flash 模型构建的个人 AI 知识库与智能助手。支持超低延迟的实时问答，作为第二大脑辅助思考。',
@@ -104,7 +104,7 @@ export const ALL_PROJECTS: Project[] = [
   },
   {
     id: 'ontology-engine',
-    slug: 'enterprise-insight-engine',
+    slug: '企业级本体分析引擎（enterprise-insight-engine）',
     title: 'Ontology Insight Engine',
     category: 'AI Architecture',
     description: '企业级语义中枢。Ontology + Agent 智能分析引擎，统一业务语义。',
@@ -118,7 +118,7 @@ export const ALL_PROJECTS: Project[] = [
   {
     id: 'toolbox',
     slug: 'web-toolbox',
-    title: 'Web Toolbox',
+    title: '网页工具箱（Web Toolbox）',
     category: 'Product',
     description: '轻量、开箱即用的多功能网页工具集合。',
     longDescription: '集成Mermaid渲染、密码生成、画板、番茄钟、LaTeX编辑等12+工具。零注册，100% 本地化存储，完全响应式设计。',
@@ -132,7 +132,7 @@ export const ALL_PROJECTS: Project[] = [
   {
     id: 'chatbi',
     slug: 'chatbi-platform',
-    title: 'ChatBI 智能数据平台',
+    title: '智能数据分析平台（ChatBI）',
     category: 'AI Platform',
     description: '结合 LLM 实现自然语言查询和智能数据分析。',
     longDescription: '支持多数据源接入、实时数据处理、智能图表生成和业务洞察自动发现。通过 AI 助手让数据分析变得像聊天一样简单。',
@@ -146,7 +146,7 @@ export const ALL_PROJECTS: Project[] = [
   {
     id: 'dataplat',
     slug: 'ai-data-processing-platform',
-    title: 'AI 数据处理平台',
+    title: 'AI 数据处理平台（DataOps）',
     category: 'AI Platform',
     description: '企业级AI数据生产体系，支撑 DeepSeek R1 数据构建。',
     longDescription: '覆盖采集、清洗、标注、增强、合成、评估全链路。主导 DeepSeek R1 数据构建（SFT/CoT/RLAIF/思维链）100+ 数据集。构建多模态 DAG Pipeline（文本/图像/音频/视频），产能提升 3 倍。',
