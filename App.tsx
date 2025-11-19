@@ -5,6 +5,7 @@ import { Section } from './types';
 import { Home } from './pages/Home';
 import { Works } from './pages/Works';
 import { Mind } from './pages/Mind';
+import { Universe } from './pages/Universe';
 import { About } from './pages/About';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -17,11 +18,13 @@ const App: React.FC = () => {
       case 'home':
         return <Home onNavigate={setActiveSection} />;
       case 'works':
-      case 'products': // Combining for simplicity in this demo
-      case 'universe': // Combining for simplicity in this demo
-        return <Works />;
+        return <Works filter="all" />;
+      case 'products': 
+        return <Works filter="product" />; // Reuse Works component with filter
       case 'mind':
         return <Mind />;
+      case 'universe':
+        return <Universe />;
       case 'about':
         return <About />;
       default:
@@ -39,7 +42,7 @@ const App: React.FC = () => {
       {/* Subtle Background Gradients */}
       <div className="fixed inset-0 z-0 pointer-events-none">
          <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[120px] opacity-50"></div>
-         <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-teal-100/30 rounded-full blur-[120px] opacity-40"></div>
+         <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-[120px] opacity-40"></div>
       </div>
 
       <Nav activeSection={activeSection} onNavigate={setActiveSection} />
@@ -59,7 +62,7 @@ const App: React.FC = () => {
         </AnimatePresence>
 
         <footer className="py-8 text-center text-slate-400 text-sm border-t border-slate-50 mt-auto">
-           <p>© {new Date().getFullYear()} Qingyang. All rights reserved. <br /> Designed with light.</p>
+           <p>© {new Date().getFullYear()} Qingyang. All rights reserved. <br /> Engineering Intelligence.</p>
         </footer>
       </main>
 

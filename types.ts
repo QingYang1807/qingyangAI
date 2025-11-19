@@ -10,20 +10,43 @@ export interface NavItem {
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   category: string;
   description: string;
-  year: string;
-  image?: string;
+  longDescription: string;
+  technologies: string[];
+  status: 'completed' | 'in-progress' | 'coming-soon';
+  results?: string[];
   link?: string;
+  featured?: boolean;
+  image?: string;
 }
 
-export interface Thought {
+export interface Advantage {
   id: string;
   title: string;
-  date: string;
-  readTime: string;
-  excerpt: string;
+  icon: LucideIcon;
+  color: string;
+  description: string;
+  details: { label: string; value: string }[];
+}
+
+export interface Certificate {
+  id: number;
+  title: string;
+  year: string;
+  description: string;
+  category: 'ai' | 'professional' | 'academic';
+  image?: string;
+}
+
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
   tags: string[];
 }
 

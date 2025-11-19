@@ -1,9 +1,9 @@
-import { GoogleGenAI, ChatSession, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { SYSTEM_INSTRUCTION } from '../constants';
 
-let chatSession: ChatSession | null = null;
+let chatSession: Chat | null = null;
 
-export const initChat = async (): Promise<ChatSession> => {
+export const initChat = async (): Promise<Chat> => {
   if (chatSession) return chatSession;
 
   if (!process.env.API_KEY) {
