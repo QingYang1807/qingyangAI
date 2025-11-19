@@ -116,6 +116,34 @@ export const ALL_PROJECTS: Project[] = [
     image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop'
   },
   {
+    id: 'toolbox',
+    slug: 'web-toolbox',
+    title: 'Web Toolbox',
+    category: 'Product',
+    description: '轻量、开箱即用的多功能网页工具集合。',
+    longDescription: '集成Mermaid渲染、密码生成、画板、番茄钟、LaTeX编辑等12+工具。零注册，100% 本地化存储，完全响应式设计。',
+    technologies: ['HTML5', 'JS', 'Canvas', 'Local Storage'],
+    status: 'completed',
+    results: ['集成12个实用工具', '100% 本地化', '零注册'],
+    link: 'https://tools.qingyang.ai',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'chatbi',
+    slug: 'chatbi-platform',
+    title: 'ChatBI 智能数据平台',
+    category: 'AI Platform',
+    description: '结合 LLM 实现自然语言查询和智能数据分析。',
+    longDescription: '支持多数据源接入、实时数据处理、智能图表生成和业务洞察自动发现。通过 AI 助手让数据分析变得像聊天一样简单。',
+    technologies: ['Vue.js', 'Doris', 'Python', 'FastAPI', 'LangChain'],
+    status: 'completed',
+    results: ['查询效率提升 5倍', 'NL2SQL准确率 95%'],
+    link: 'https://chatbi.qingyang.ai',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
+  },
+  {
     id: 'dataplat',
     slug: 'ai-data-processing-platform',
     title: 'AI 数据处理平台',
@@ -143,19 +171,6 @@ export const ALL_PROJECTS: Project[] = [
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop'
   },
   {
-    id: 'datagov-platform',
-    slug: 'data-governance-platform',
-    title: '全生命周期数据治理平台',
-    category: 'Data Platform',
-    description: '覆盖元数据、标准、质量、安全的统一治理体系。',
-    longDescription: '负责企业级全生命周期治理平台核心模块研发。构建元数据管理、数据标准体系、全链路血缘分析、数据质量稽核与安全管控模块。实现元数据与业务系统自动打通，构建可视化血缘图谱，显著提升数据资产的透明度与合规性。',
-    technologies: ['Java', 'SpringBoot', 'ElasticSearch', 'Neo4j', 'ClickHouse'],
-    status: 'completed',
-    results: ['元数据追溯效率+90%', '安全合规扫描100%', '资产透明化'],
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
     id: 'data-middle-platform',
     slug: 'data-middle-platform',
     title: '企业级数据中台',
@@ -169,32 +184,17 @@ export const ALL_PROJECTS: Project[] = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
   },
   {
-    id: 'chatbi',
-    slug: 'chatbi-platform',
-    title: 'ChatBI 智能数据平台',
-    category: 'AI Platform',
-    description: '结合 LLM 实现自然语言查询和智能数据分析。',
-    longDescription: '支持多数据源接入、实时数据处理、智能图表生成和业务洞察自动发现。通过 AI 助手让数据分析变得像聊天一样简单。',
-    technologies: ['Vue.js', 'Doris', 'Python', 'FastAPI', 'LangChain'],
+    id: 'datagov-platform',
+    slug: 'data-governance-platform',
+    title: '全生命周期数据治理平台',
+    category: 'Data Platform',
+    description: '覆盖元数据、标准、质量、安全的统一治理体系。',
+    longDescription: '负责企业级全生命周期治理平台核心模块研发。构建元数据管理、数据标准体系、全链路血缘分析、数据质量稽核与安全管控模块。实现元数据与业务系统自动打通，构建可视化血缘图谱，显著提升数据资产的透明度与合规性。',
+    technologies: ['Java', 'SpringBoot', 'ElasticSearch', 'Neo4j', 'ClickHouse'],
     status: 'completed',
-    results: ['查询效率提升 5倍', 'NL2SQL准确率 95%'],
-    link: 'https://chatbi.qingyang.ai',
+    results: ['元数据追溯效率+90%', '安全合规扫描100%', '资产透明化'],
     featured: false,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 'toolbox',
-    slug: 'web-toolbox',
-    title: 'Web Toolbox',
-    category: 'Product',
-    description: '轻量、开箱即用的多功能网页工具集合。',
-    longDescription: '集成Mermaid渲染、密码生成、画板、番茄钟、LaTeX编辑等12+工具。零注册，100% 本地化存储，完全响应式设计。',
-    technologies: ['HTML5', 'JS', 'Canvas', 'Local Storage'],
-    status: 'completed',
-    results: ['集成12个实用工具', '100% 本地化', '零注册'],
-    link: 'https://tools.qingyang.ai',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&auto=format&fit=crop'
   }
 ];
 
