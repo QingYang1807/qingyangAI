@@ -15,6 +15,8 @@ export const SOCIAL_LINKS = [
   { name: 'Blog', href: 'http://linqingyang.com' },
 ];
 
+export const WECHAT_QR_CODE = '/images/qrcode_for_gh_0453b5821be3_1280.jpg';
+
 export const ADVANTAGES: Advantage[] = [
   {
     id: '1',

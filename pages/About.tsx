@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../components/ui/Card';
-import { EXPERIENCES, SOCIAL_LINKS } from '../constants';
+import { EXPERIENCES, SOCIAL_LINKS, WECHAT_QR_CODE } from '../constants';
 import { Github, Globe } from 'lucide-react';
+import { WeChatButton } from '../components/WeChatButton';
 
 export const About: React.FC = () => {
   return (
@@ -47,6 +48,7 @@ export const About: React.FC = () => {
                    {link.name}
                  </a>
                ))}
+               <WeChatButton qrCodeImage={WECHAT_QR_CODE} />
              </div>
           </motion.div>
 
