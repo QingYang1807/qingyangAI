@@ -13,6 +13,7 @@ export const NAV_ITEMS: { id: Section; label: string }[] = [
 export const SOCIAL_LINKS = [
   { name: 'GitHub', href: 'https://github.com/QIngYang1807' },
   { name: 'Blog', href: 'http://linqingyang.com' },
+  { name: 'CSDN', href: 'https://blog.csdn.net/zsrsdf?type=blog' },
 ];
 
 export const WECHAT_QR_CODE = '/images/qrcode_for_gh_0453b5821be3_1280.jpg';
