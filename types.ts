@@ -1,6 +1,7 @@
 import { LucideIcon } from "lucide-react";
 
 export type Section = 'home' | 'works' | 'products' | 'mind' | 'universe' | 'about';
+export type Language = 'en' | 'zh';
 
 export interface NavItem {
   id: Section;

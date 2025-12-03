@@ -1,13 +1,14 @@
 import React from 'react';
-import { CERTIFICATES } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Card } from '../components/ui/Card';
 import { motion } from 'framer-motion';
 import { Award, Book, Briefcase } from 'lucide-react';
 
 export const Universe: React.FC = () => {
+  const { content } = useLanguage();
   // Group certificates by category
-  const aiCerts = CERTIFICATES.filter(c => c.category === 'ai');
-  const profCerts = CERTIFICATES.filter(c => c.category === 'professional');
+  const aiCerts = content.certificates.filter(c => c.category === 'ai');
+  const profCerts = content.certificates.filter(c => c.category === 'professional');
 
   return (
     <div className="pt-32 pb-20 max-w-7xl mx-auto px-6">
@@ -16,9 +17,9 @@ export const Universe: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-16"
       >
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Honors & Certificates</h1>
+        <h1 className="text-4xl font-bold text-slate-900 mb-4">{content.universe.title}</h1>
         <p className="text-lg text-slate-500 max-w-2xl">
-          Continuous learning and professional certification, witnessing technical growth and industry recognition.
+          {content.universe.description}
         </p>
       </motion.div>
 
@@ -26,7 +27,7 @@ export const Universe: React.FC = () => {
       <div className="mb-16">
         <div className="flex items-center gap-3 mb-8">
           <div className="p-2 bg-blue-100 text-blue-600 rounded-lg"><Award size={20} /></div>
-          <h2 className="text-2xl font-bold text-slate-900">AI Specialization</h2>
+          <h2 className="text-2xl font-bold text-slate-900">{content.universe.aiTitle}</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {aiCerts.map((cert, idx) => (
@@ -43,7 +44,7 @@ export const Universe: React.FC = () => {
       <div>
         <div className="flex items-center gap-3 mb-8">
           <div className="p-2 bg-purple-100 text-purple-600 rounded-lg"><Briefcase size={20} /></div>
-          <h2 className="text-2xl font-bold text-slate-900">Professional Certifications</h2>
+          <h2 className="text-2xl font-bold text-slate-900">{content.universe.profTitle}</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {profCerts.map((cert, idx) => (

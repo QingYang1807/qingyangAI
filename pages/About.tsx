@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../components/ui/Card';
-import { EXPERIENCES, SOCIAL_LINKS, WECHAT_QR_CODE } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
+import { SOCIAL_LINKS } from '../constants';
 import { Github, Globe } from 'lucide-react';
-import { WeChatButton } from '../components/WeChatButton';
 
 export const About: React.FC = () => {
+  const { content } = useLanguage();
+
   return (
     <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
        
@@ -16,22 +18,22 @@ export const About: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             className="md:col-span-2"
           >
-             <h1 className="text-4xl font-bold text-slate-900 mb-6">Qingyang</h1>
+             <h1 className="text-4xl font-bold text-slate-900 mb-6">{content.about.name}</h1>
              <p className="text-xl text-slate-500 mb-6 leading-relaxed font-light">
-               AI Infrastructure & RAG Engineering Specialist.
+               {content.about.role}
              </p>
              <div className="prose prose-slate text-slate-600 leading-relaxed">
                 <p className="mb-4">
-                  My expertise lies in building the complete AI application lifecycle: 
-                  <strong className="text-slate-800"> Data → Retrieval → Reasoning → Orchestration → Application</strong>.
+                  {content.about.intro1} <strong className="text-slate-800"> {content.hero.chain.join(' → ')}</strong>.
                 </p>
                 <p className="mb-4">
-                  I possess a unique fusion of capabilities: <strong>Data Platform x RAG x Agent Workflow</strong>. 
-                  I have architected enterprise-level data platforms supporting 300+ AI scenes and millions of data points, 
-                  and engineered sophisticated Agent orchestration engines using LangGraph and Ontology modeling.
+                  {/* Rendering intro2 which might have markdown-like syntax for bolding */}
+                  {content.about.intro2.split('**').map((part, index) => 
+                    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                  )}
                 </p>
                 <p>
-                   I focus on turning complex algorithms into scalable, stable, and explainable engineering solutions.
+                   {content.about.intro3}
                 </p>
              </div>
              
@@ -48,7 +50,6 @@ export const About: React.FC = () => {
                    {link.name}
                  </a>
                ))}
-               <WeChatButton qrCodeImage={WECHAT_QR_CODE} />
              </div>
           </motion.div>
 
@@ -60,20 +61,16 @@ export const About: React.FC = () => {
           >
              <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl p-1 shadow-inner">
                 <div className="bg-white rounded-xl p-6 h-full">
-                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">Impact</h3>
+                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">{content.about.impactTitle}</h3>
                    <div className="space-y-6">
-                      <div>
-                         <div className="text-3xl font-bold text-slate-900">300+</div>
-                         <div className="text-sm text-slate-500">AI Scenes Supported</div>
-                      </div>
-                      <div>
-                         <div className="text-3xl font-bold text-qy-blue">19+</div>
-                         <div className="text-sm text-slate-500">RAG/Agent Apps</div>
-                      </div>
-                      <div>
-                         <div className="text-3xl font-bold text-emerald-500">500k+</div>
-                         <div className="text-sm text-slate-500">CoT Data Samples</div>
-                      </div>
+                      {content.about.stats.map((stat, idx) => (
+                        <div key={idx}>
+                           <div className={`text-3xl font-bold ${idx === 0 ? 'text-slate-900' : idx === 1 ? 'text-qy-blue' : 'text-emerald-500'}`}>
+                             {stat.value}
+                           </div>
+                           <div className="text-sm text-slate-500">{stat.label}</div>
+                        </div>
+                      ))}
                    </div>
                 </div>
              </div>
@@ -87,9 +84,9 @@ export const About: React.FC = () => {
          viewport={{ once: true }}
          className="mb-20"
        >
-          <h2 className="text-2xl font-bold text-slate-900 mb-8">Professional Experience</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-8">{content.about.expTitle}</h2>
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-            {EXPERIENCES.map((exp, idx) => (
+            {content.experiences.map((exp, idx) => (
               <div key={exp.id} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   
                   {/* Icon */}
@@ -122,10 +119,10 @@ export const About: React.FC = () => {
          whileInView={{ opacity: 1, y: 0 }}
          viewport={{ once: true }}
        >
-          <h2 className="text-2xl font-bold text-slate-900 mb-8">Skill Matrix</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-8">{content.about.skillsTitle}</h2>
           <div className="grid md:grid-cols-2 gap-8">
              <div className="space-y-6">
-                <h3 className="font-bold text-slate-700">Core Engineering</h3>
+                <h3 className="font-bold text-slate-700">{content.about.coreEng}</h3>
                 <div className="space-y-4">
                    <SkillBar name="LangGraph / Agent Orchestration" level={95} />
                    <SkillBar name="RAG / Retrieval Optimization" level={92} />
@@ -134,7 +131,7 @@ export const About: React.FC = () => {
                 </div>
              </div>
              <div className="space-y-6">
-                <h3 className="font-bold text-slate-700">Capabilities</h3>
+                <h3 className="font-bold text-slate-700">{content.about.capabilities}</h3>
                 <div className="space-y-4">
                    <SkillBar name="System Design" level={90} />
                    <SkillBar name="Data Pipeline (DAG)" level={92} />

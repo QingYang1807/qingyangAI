@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/Button';
 import { Database, Network, Brain } from 'lucide-react';
-import { ALL_PROJECTS } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Card } from '../components/ui/Card';
 import { Toast } from '../components/ui/Toast';
 
@@ -12,7 +12,8 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const [showToast, setShowToast] = useState(false);
-  const featuredProjects = ALL_PROJECTS.filter(p => p.featured).slice(0, 3);
+  const { content } = useLanguage();
+  const featuredProjects = content.projects.filter(p => p.featured).slice(0, 3);
 
   const handleProjectClick = (link?: string) => {
     if (link) {
@@ -25,7 +26,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="pt-32 pb-20">
       <Toast 
-        message="Internal Enterprise Project - Not Publicly Available" 
+        message={content.hero.toastPrivate}
         isVisible={showToast} 
         onClose={() => setShowToast(false)} 
       />
@@ -38,21 +39,21 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block py-1 px-3 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-qy-blue tracking-wide mb-6 uppercase">
-            AI Infra • RAG • Agent Orchestration
+            {content.hero.tag}
           </span>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-tight">
-            Building the <br />
+            {content.hero.title1} <br />
             <span className="bg-gradient-to-r from-qy-blue to-emerald-400 bg-clip-text text-transparent">
-              Intelligent Infrastructure
+              {content.hero.title2}
             </span>
           </h1>
           <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
-            Constructing end-to-end AI application chains: <br className="hidden md:block"/>
-            <strong className="text-slate-700 font-medium">Data</strong> → <strong className="text-slate-700 font-medium">Retrieval</strong> → <strong className="text-slate-700 font-medium">Reasoning</strong> → <strong className="text-slate-700 font-medium">Orchestration</strong>.
+            {content.hero.description} <br className="hidden md:block"/>
+            <strong className="text-slate-700 font-medium">{content.hero.chain[0]}</strong> → <strong className="text-slate-700 font-medium">{content.hero.chain[1]}</strong> → <strong className="text-slate-700 font-medium">{content.hero.chain[2]}</strong> → <strong className="text-slate-700 font-medium">{content.hero.chain[3]}</strong>.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button onClick={() => onNavigate('works')} icon>View Architectures</Button>
-            <Button variant="secondary" onClick={() => onNavigate('products')}>Try Products</Button>
+            <Button onClick={() => onNavigate('works')} icon>{content.hero.ctaPrimary}</Button>
+            <Button variant="secondary" onClick={() => onNavigate('products')}>{content.hero.ctaSecondary}</Button>
           </div>
         </motion.div>
         
@@ -72,19 +73,19 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-qy-blue">
                   <Database size={32} />
                 </div>
-                <span className="text-sm font-medium text-slate-600">Data Pipeline</span>
+                <span className="text-sm font-medium text-slate-600">Data</span>
               </div>
               <div className="flex flex-col items-center gap-3">
                  <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-emerald-500">
                   <Brain size={32} />
                 </div>
-                <span className="text-sm font-medium text-slate-600">Reasoning Engine</span>
+                <span className="text-sm font-medium text-slate-600">Reasoning</span>
               </div>
               <div className="flex flex-col items-center gap-3">
                  <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-purple-500">
                   <Network size={32} />
                 </div>
-                <span className="text-sm font-medium text-slate-600">Agent Graph</span>
+                <span className="text-sm font-medium text-slate-600">Agent</span>
               </div>
            </div>
         </motion.div>
@@ -94,10 +95,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-end mb-12">
            <div>
-             <h2 className="text-3xl font-bold text-slate-900">Featured Work</h2>
-             <p className="text-slate-500 mt-2">From live products to enterprise architectures.</p>
+             <h2 className="text-3xl font-bold text-slate-900">{content.hero.featuredTitle}</h2>
+             <p className="text-slate-500 mt-2">{content.hero.featuredDesc}</p>
            </div>
-           <Button variant="ghost" onClick={() => onNavigate('works')} icon>View All</Button>
+           <Button variant="ghost" onClick={() => onNavigate('works')} icon>{content.hero.viewAll}</Button>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -112,7 +113,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                  {work.image ? (
                    <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  ) : (
-                   <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-50">No Image</div>
+                   <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-50">{content.hero.noImage}</div>
                  )}
                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-600 border border-slate-200">
                     {work.category}

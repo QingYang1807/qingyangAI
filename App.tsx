@@ -8,8 +8,9 @@ import { Mind } from './pages/Mind';
 import { Universe } from './pages/Universe';
 import { About } from './pages/About';
 import { motion, AnimatePresence } from 'framer-motion';
+import { LanguageProvider } from './contexts/LanguageContext';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>('home');
 
   // Simple page routing logic
@@ -68,6 +69,14 @@ const App: React.FC = () => {
 
       <ChatWidget />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 };
 

@@ -1,24 +1,79 @@
 import { Section, Project, Advantage, Certificate, Experience } from './types';
 import { Layers, Code, Cpu, Rocket, Zap, Brain, FileText, Database, Network } from 'lucide-react';
 
-export const NAV_ITEMS: { id: Section; label: string }[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'works', label: 'Works' },
-  { id: 'products', label: 'Products' },
-  { id: 'mind', label: 'Mind' },
-  { id: 'universe', label: 'Universe' },
-  { id: 'about', label: 'About' },
-];
-
 export const SOCIAL_LINKS = [
   { name: 'GitHub', href: 'https://github.com/QIngYang1807' },
   { name: 'Blog', href: 'http://linqingyang.com' },
-  { name: 'CSDN', href: 'https://blog.csdn.net/zsrsdf?type=blog' },
 ];
 
-export const WECHAT_QR_CODE = '/images/qrcode_for_gh_0453b5821be3_1280.jpg';
+export const SYSTEM_INSTRUCTION = `You are Qingyang's AI assistant.
+Identity: Qingyang is an AI Infra & RAG Engineering Expert. He specializes in end-to-end AI application chains (Data -> Retrieval -> Reasoning -> Orchestration -> Application).
+Highlights:
+- **Five Haves**: Data x RAG x Agent, Ontology Modeling, Strong Engineering, Modular Architecture, Evolution.
+- **Key Products**: Qingyang Resume (resume.qingyang.ai), Qingyang Brain (brain.qingyang.ai).
+- **Experience**: Lead Architect at a Tech Startup (Ontology/Agent), AI Platform Lead at a Public Listed Tech Company (DeepSeek R1 Data, 300k+ Datasets).
+- **Skills**: LangGraph, CrewAI, Java, Python, SpringCloud, Distributed Systems.
+Tone: Professional, insightful, and concise. Focus on his engineering capabilities and system design skills.`;
 
-export const ADVANTAGES: Advantage[] = [
+const ADVANTAGES_EN: Advantage[] = [
+  {
+    id: '1',
+    title: 'Data x RAG x Agent',
+    icon: Layers,
+    color: 'text-qy-blue',
+    description: 'Triple-stack fusion capability. Independent end-to-end implementation from data construction, knowledge base creation, retrieval optimization, to agent orchestration.',
+    details: [
+      { label: 'Full Cycle', value: 'Data → Retrieval → Reasoning' },
+      { label: 'Engineering', value: 'End-to-End Implementation' }
+    ]
+  },
+  {
+    id: '2',
+    title: 'Ontology Modeling',
+    icon: Network,
+    color: 'text-purple-500',
+    description: 'Expert in semantic abstraction. Unifying business semantics with enterprise ontology to build explainable, reproducible analysis Agents.',
+    details: [
+      { label: 'Semantic Layer', value: 'Business Semantics' },
+      { label: 'Explainable', value: 'Graph RAG / Reasoning' }
+    ]
+  },
+  {
+    id: '3',
+    title: 'Strong Engineering (Infra)',
+    icon: Database,
+    color: 'text-emerald-500',
+    description: 'Supporting 300+ AI scenes, 500+ datasets, and million-level capacity. Lead architect for AI Data Platform from 0 to 1.',
+    details: [
+      { label: 'Throughput', value: '1TB Peak / Million Ops' },
+      { label: 'Scale', value: '300+ AI Scenes' }
+    ]
+  },
+  {
+    id: '4',
+    title: 'Modular Architecture',
+    icon: Cpu,
+    color: 'text-blue-500',
+    description: 'Decomposing complex chains into engineering components: Modular RAG, Multi-model Routing, LangGraph State Machines, Chunking Experiments.',
+    details: [
+      { label: 'Orchestration', value: 'LangGraph / CrewAI' },
+      { label: 'Strategy', value: 'Hybrid Search / ReRank' }
+    ]
+  },
+  {
+    id: '5',
+    title: 'Evolution',
+    icon: Zap,
+    color: 'text-orange-500',
+    description: 'Deep involvement in DeepSeek R1 data construction (SFT/CoT/RLAIF). Annually reading 50+ Arxiv papers and translating them into production.',
+    details: [
+      { label: 'Frontier', value: 'DeepSeek R1 / CoT' },
+      { label: 'Learning', value: 'Arxiv -> Production' }
+    ]
+  }
+];
+
+const ADVANTAGES_ZH: Advantage[] = [
   {
     id: '1',
     title: 'Data x RAG x Agent',
@@ -76,7 +131,132 @@ export const ADVANTAGES: Advantage[] = [
   }
 ];
 
-export const ALL_PROJECTS: Project[] = [
+const PROJECTS_EN: Project[] = [
+  {
+    id: 'resume',
+    slug: 'qingyang-resume',
+    title: 'Easy-Resume',
+    category: 'Product',
+    description: 'Create professional resumes effortlessly. Minimalist design, powerful features.',
+    longDescription: 'Minimalist design, powerful features. Makes resume creation simple and efficient. Focus on content creation without worrying about complex layout. One-click export to professional PDF.',
+    technologies: ['Next.js', 'Tailwind', 'React PDF', 'AI Writer'],
+    status: 'completed',
+    results: ['Minimalist UX', 'Real-time Preview', 'PDF Export'],
+    link: 'https://resume.qingyang.ai',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'brain',
+    slug: 'qingyang-brain',
+    title: 'Qingyang Brain',
+    category: 'Product',
+    description: 'AI Brain Product. Real-time chat with Gemini-Flash.',
+    longDescription: 'Personal AI knowledge base and assistant built on Google Gemini Flash. Supports ultra-low latency real-time Q&A, serving as a second brain to assist thinking.',
+    technologies: ['Gemini Flash', 'React', 'Vercel AI SDK', 'Streaming'],
+    status: 'completed',
+    results: ['Real-time', 'Powered by Gemini', 'Smart Q&A'],
+    link: 'https://brain.qingyang.ai',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'ontology-engine',
+    slug: 'enterprise-insight-engine',
+    title: 'Ontology Insight Engine',
+    category: 'AI Architecture',
+    description: 'Enterprise Semantic Hub. Ontology + Agent Engine unifying business semantics.',
+    longDescription: 'Lead architect for company-wide Ontology + Agent engine. Unified semantics for subscriptions, orders, and behavior, building an enterprise ontology with 40+ entities. Built an orchestration engine based on LangGraph/CrewAI for FSM-driven Agent chains. Proposed DSS Data Saturation Score system.',
+    technologies: ['LangGraph', 'CrewAI', 'Milvus', 'Knowledge Graph', 'FastAPI'],
+    status: 'completed',
+    results: ['Auto Ontology', 'Explainable Analysis', 'SQL/Cypher Gen'],
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'toolbox',
+    slug: 'web-toolbox',
+    title: 'Web Toolbox',
+    category: 'Product',
+    description: 'Lightweight, out-of-the-box collection of web tools.',
+    longDescription: 'Integrated 12+ tools including Mermaid renderer, Password Generator, Canvas, Pomodoro, LaTeX editor. Zero registration, 100% local storage, fully responsive.',
+    technologies: ['HTML5', 'JS', 'Canvas', 'Local Storage'],
+    status: 'completed',
+    results: ['12+ Tools', '100% Local', 'No Registration'],
+    link: 'https://tools.qingyang.ai',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'chatbi',
+    slug: 'chatbi-platform',
+    title: 'ChatBI Platform',
+    category: 'AI Platform',
+    description: 'Natural Language Query and Intelligent Data Analysis with LLM.',
+    longDescription: 'Supports multi-source data integration, real-time processing, smart charting, and auto-insight discovery. Makes data analysis as simple as chatting via AI assistant.',
+    technologies: ['Vue.js', 'Doris', 'Python', 'FastAPI', 'LangChain'],
+    status: 'completed',
+    results: ['5x Query Efficiency', '95% NL2SQL Accuracy'],
+    link: 'https://chatbi.qingyang.ai',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'dataplat',
+    slug: 'ai-data-processing-platform',
+    title: 'AI DataOps Platform',
+    category: 'AI Platform',
+    description: 'Enterprise AI Data Production System, supporting DeepSeek R1 data construction.',
+    longDescription: 'Covers full lifecycle: collection, cleaning, labeling, augmentation, synthesis, evaluation. Led DeepSeek R1 data construction (SFT/CoT/RLAIF) with 100+ datasets. Built multi-modal DAG Pipeline (Text/Image/Audio/Video), tripling capacity.',
+    technologies: ['SpringCloud', 'LangChain', 'DeepSeek R1', 'RAG', 'Agent'],
+    status: 'completed',
+    results: ['300k+ Datasets', '500k+ CoT Samples', '10+ Industries'],
+    link: 'https://data.qingyang.ai',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1558494949-efc02570fbc9?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'ragagent',
+    slug: 'rag-agent-applications',
+    title: '19+ RAG Agent Apps',
+    category: 'AI Application',
+    description: 'Cluster of 19+ AI Apps, saving 90% human cost.',
+    longDescription: 'Developed 19+ applications including Contract Extraction, Policy QA, Smart CS, Coding Assistant, Interview Helper. Built RAG retrieval chain (Chunking/Hybrid Search/ReRank). 100+ daily internal calls, selected as Government Digital Transformation Case Study.',
+    technologies: ['Python', 'RAG', 'Agent', 'ChatGLM4', 'LoRA'],
+    status: 'completed',
+    results: ['19+ Apps', '90% Cost Saving', 'Gov Case Study'],
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'data-middle-platform',
+    slug: 'data-middle-platform',
+    title: 'Data Middle Platform',
+    category: 'Data Platform',
+    description: 'Data Middle Platform Architecture Refactoring and Service Construction.',
+    longDescription: 'Responsible for underlying framework development and microservice evolution (separation of frontend/backend). Deep integration of data governance capabilities (Standards, Models, Assets). Implemented Asset Map Search, Health Monitoring, and Anomaly Alerting.',
+    technologies: ['Java', 'SpringCloud', 'Kafka', 'Redis', 'Docker'],
+    status: 'completed',
+    results: ['Efficiency +200%', 'Microservices', 'Anomaly Alerts'],
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    id: 'datagov-platform',
+    slug: 'data-governance-platform',
+    title: 'Data Governance Platform',
+    category: 'Data Platform',
+    description: 'Unified governance system covering Metadata, Standards, Quality, and Security.',
+    longDescription: 'Developed core modules for full-lifecycle governance platform. Built Metadata Management, Data Standards, Full-link Lineage, Quality Audit, and Security Control. Achieved automated integration with business systems and visual lineage graphs.',
+    technologies: ['Java', 'SpringBoot', 'ElasticSearch', 'Neo4j', 'ClickHouse'],
+    status: 'completed',
+    results: ['Traceability +90%', 'Compliance 100%', 'Asset Transparency'],
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&auto=format&fit=crop'
+  }
+];
+
+const PROJECTS_ZH: Project[] = [
   {
     id: 'resume',
     slug: 'qingyang-resume',
@@ -201,7 +381,45 @@ export const ALL_PROJECTS: Project[] = [
   }
 ];
 
-export const CERTIFICATES: Certificate[] = [
+const CERTIFICATES_EN: Certificate[] = [
+  {
+    id: 1,
+    title: "Annual Excellent Deliverable Award (2nd Prize)",
+    year: "2024",
+    description: "Awarded to 5 out of 3000+ employees for outstanding AI platform deliverables.",
+    category: 'professional'
+  },
+  {
+    id: 2,
+    title: "AI Full-Stack Development Certificate",
+    year: "2025",
+    description: "Systematic mastery of AI frontend/backend, model deployment, and application capabilities.",
+    category: 'ai'
+  },
+  {
+    id: 3,
+    title: "Advanced LLM RAG Certificate",
+    year: "2025",
+    description: "Advanced mastery of RAG architecture, retrieval strategies, and Agent development.",
+    category: 'ai'
+  },
+  {
+    id: 4,
+    title: "Enterprise Agent Development",
+    year: "2024",
+    description: "Mastery of CrewAI/LangGraph orchestration, multi-agent collaboration, and production deployment.",
+    category: 'ai'
+  },
+  {
+    id: 5,
+    title: "Senior Big Data Analyst",
+    year: "2024",
+    description: "Data mining and analysis modeling capabilities for complex business scenarios.",
+    category: 'professional'
+  }
+];
+
+const CERTIFICATES_ZH: Certificate[] = [
   {
     id: 1,
     title: "年度优秀交付物二等奖",
@@ -239,7 +457,34 @@ export const CERTIFICATES: Certificate[] = [
   }
 ];
 
-export const EXPERIENCES: Experience[] = [
+const EXPERIENCES_EN: Experience[] = [
+  {
+    id: '1',
+    role: "Lead Architect",
+    company: "Million-Dollar Angel Round Startup",
+    period: "2025.09 - 2025.11",
+    description: "Led the construction of company-wide Ontology + Agent Insight Engine. Built FSM-driven Agent chains using LangGraph/CrewAI. Proposed DSS Data Saturation Score system. Delivered RAG Retrieval Chain & Insight Agent.",
+    tags: ["Ontology", "Agent Orchestration", "LangGraph", "System Design"]
+  },
+  {
+    id: '2',
+    role: "Senior Engineer (AI Platform Lead)",
+    company: "Top Industry Player (Public Company)",
+    period: "2020.06 - 2025.07",
+    description: "Built AI Data Production System from 0 to 1, tripling capacity. Led DeepSeek R1 data construction (500k+ samples). Developed 19+ RAG Agent Apps. Responsible for Data Governance & Middle Platform refactoring.",
+    tags: ["AI Platform", "DeepSeek R1", "RAG", "Team Lead"]
+  },
+  {
+    id: '3',
+    role: "Education",
+    company: "Double First-Class University",
+    period: "2016.09 - 2020.06",
+    description: "Bachelor in Software Engineering. Awarded scholarships for three consecutive years. Class Monitor & Campus Host.",
+    tags: ["Software Engineering", "Bachelor"]
+  }
+];
+
+const EXPERIENCES_ZH: Experience[] = [
   {
     id: '1',
     role: "架构设计 & 主负责人",
@@ -266,11 +511,140 @@ export const EXPERIENCES: Experience[] = [
   }
 ];
 
-export const SYSTEM_INSTRUCTION = `You are Qingyang's AI assistant.
-Identity: Qingyang is an AI Infra & RAG Engineering Expert. He specializes in end-to-end AI application chains (Data -> Retrieval -> Reasoning -> Orchestration -> Application).
-Highlights:
-- **Five Haves**: Data x RAG x Agent, Ontology Modeling, Strong Engineering, Modular Architecture, Evolution.
-- **Key Products**: Qingyang Resume (resume.qingyang.ai), Qingyang Brain (brain.qingyang.ai).
-- **Experience**: Lead Architect at a Tech Startup (Ontology/Agent), AI Platform Lead at a Public Listed Tech Company (DeepSeek R1 Data, 300k+ Datasets).
-- **Skills**: LangGraph, CrewAI, Java, Python, SpringCloud, Distributed Systems.
-Tone: Professional, insightful, and concise. Focus on his engineering capabilities and system design skills.`;
+
+export const CONTENT = {
+  en: {
+    nav: [
+      { id: 'home', label: 'Home' },
+      { id: 'works', label: 'Works' },
+      { id: 'products', label: 'Products' },
+      { id: 'mind', label: 'Mind' },
+      { id: 'universe', label: 'Universe' },
+      { id: 'about', label: 'About' },
+    ],
+    hero: {
+      tag: "AI Infra • RAG • Agent Orchestration",
+      title1: "Building the",
+      title2: "Intelligent Infrastructure",
+      description: "Constructing end-to-end AI application chains:",
+      chain: ["Data", "Retrieval", "Reasoning", "Orchestration"],
+      ctaPrimary: "View Architectures",
+      ctaSecondary: "Try Products",
+      featuredTitle: "Featured Work",
+      featuredDesc: "From live products to enterprise architectures.",
+      viewAll: "View All",
+      noImage: "No Image",
+      techStack: "Tech Stack",
+      toastPrivate: "Internal Enterprise Project - Not Publicly Available"
+    },
+    works: {
+      titleProjects: "Projects & Architectures",
+      descProjects: "Enterprise-grade systems, architectures, and AI applications delivered for impact.",
+      titleProducts: "Products",
+      descProducts: "Live tools built for efficiency and creativity.",
+      visitLive: "Visit Live",
+      filterAll: "All"
+    },
+    mind: {
+      title: "Core Advantages",
+      description: "Based on 5 years of enterprise development experience, I have formed a unique \"Five Haves\" system to provide comprehensive professional services.",
+      contactTitle: "Need a Technical Partner?",
+      contactDesc: "Whether it's technical consulting, product development, or team training, I can provide professional support based on extensive practical experience.",
+      contactBtn: "Start Consultation"
+    },
+    universe: {
+      title: "Honors & Certificates",
+      description: "Continuous learning and professional certification, witnessing technical growth and industry recognition.",
+      aiTitle: "AI Specialization",
+      profTitle: "Professional Certifications"
+    },
+    about: {
+      name: "Qingyang",
+      role: "AI Infrastructure & RAG Engineering Specialist.",
+      intro1: "My expertise lies in building the complete AI application lifecycle:",
+      intro2: "I possess a unique fusion of capabilities: **Data Platform x RAG x Agent Workflow**. I have architected enterprise-level data platforms supporting 300+ AI scenes and millions of data points, and engineered sophisticated Agent orchestration engines using LangGraph and Ontology modeling.",
+      intro3: "I focus on turning complex algorithms into scalable, stable, and explainable engineering solutions.",
+      impactTitle: "Impact",
+      stats: [
+        { value: "300+", label: "AI Scenes Supported" },
+        { value: "19+", label: "RAG/Agent Apps" },
+        { value: "500k+", label: "CoT Data Samples" }
+      ],
+      expTitle: "Professional Experience",
+      skillsTitle: "Skill Matrix",
+      coreEng: "Core Engineering",
+      capabilities: "Capabilities"
+    },
+    advantages: ADVANTAGES_EN,
+    projects: PROJECTS_EN,
+    certificates: CERTIFICATES_EN,
+    experiences: EXPERIENCES_EN
+  },
+  zh: {
+    nav: [
+      { id: 'home', label: '首页' },
+      { id: 'works', label: '作品' },
+      { id: 'products', label: '产品' },
+      { id: 'mind', label: '思维' },
+      { id: 'universe', label: '宇宙' },
+      { id: 'about', label: '关于' },
+    ],
+    hero: {
+      tag: "AI 基础设施 • RAG • Agent 编排",
+      title1: "构建",
+      title2: "智能基础设施",
+      description: "构建端到端 AI 应用链路：",
+      chain: ["数据", "检索", "推理", "编排"],
+      ctaPrimary: "查看架构案例",
+      ctaSecondary: "体验产品",
+      featuredTitle: "精选案例",
+      featuredDesc: "从独立产品到企业级架构落地。",
+      viewAll: "查看全部",
+      noImage: "暂无图片",
+      techStack: "技术栈",
+      toastPrivate: "企业内部项目 - 暂不对外开放"
+    },
+    works: {
+      titleProjects: "项目与架构",
+      descProjects: "交付有影响力的企业级系统、架构与 AI 应用。",
+      titleProducts: "产品",
+      descProducts: "为效率与创造力打造的实时工具。",
+      visitLive: "访问产品",
+      filterAll: "全部"
+    },
+    mind: {
+      title: "核心优势",
+      description: "基于 5 年企业级开发经验，形成独特的“五有”优势体系，为您提供全方位的专业服务。",
+      contactTitle: "寻找技术伙伴？",
+      contactDesc: "无论是技术咨询、产品开发还是团队培训，我都能基于丰富的实战经验为您提供专业的支持。",
+      contactBtn: "开始咨询"
+    },
+    universe: {
+      title: "荣誉与证书",
+      description: "持续学习与专业认证，见证技术成长与行业认可。",
+      aiTitle: "AI 专项认证",
+      profTitle: "专业资质认证"
+    },
+    about: {
+      name: "清扬",
+      role: "AI 基础设施 & RAG 工程专家",
+      intro1: "专精于构建 AI 应用的全生命周期链路：",
+      intro2: "具备独特的 **数据平台 x RAG x Agent 工作流** 三栈融合能力。主导构建了支撑 300+ AI 场景的企业级数据平台，并使用 LangGraph 和本体建模设计了复杂的 Agent 编排引擎。",
+      intro3: "专注于将复杂的算法转化为可扩展、稳定且可解释的工程解决方案。",
+      impactTitle: "影响力",
+      stats: [
+        { value: "300+", label: "AI 场景支撑" },
+        { value: "19+", label: "RAG/Agent 应用" },
+        { value: "50万+", label: "CoT 样本数据" }
+      ],
+      expTitle: "专业经历",
+      skillsTitle: "技能矩阵",
+      coreEng: "核心工程",
+      capabilities: "综合能力"
+    },
+    advantages: ADVANTAGES_ZH,
+    projects: PROJECTS_ZH,
+    certificates: CERTIFICATES_ZH,
+    experiences: EXPERIENCES_ZH
+  }
+};

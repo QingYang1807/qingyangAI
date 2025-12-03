@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ALL_PROJECTS } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Card } from '../components/ui/Card';
 import { motion } from 'framer-motion';
 import { ExternalLink, CheckCircle2 } from 'lucide-react';
@@ -9,14 +9,15 @@ interface WorksProps {
 }
 
 export const Works: React.FC<WorksProps> = ({ filter = 'all' }) => {
-  const [activeFilter, setActiveFilter] = useState<string>('All');
+  const { content } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState<string>(content.works.filterAll);
   
-  const categories = ['All', 'AI Architecture', 'AI Platform', 'AI Application', 'Data Platform', 'Product'];
+  const categories = [content.works.filterAll, 'AI Architecture', 'AI Platform', 'AI Application', 'Data Platform', 'Product'];
 
-  const filteredProjects = ALL_PROJECTS.filter(p => {
+  const filteredProjects = content.projects.filter(p => {
     if (filter === 'product') return p.category === 'Product';
     
-    if (activeFilter === 'All') {
+    if (activeFilter === content.works.filterAll) {
       if (filter === 'case-study') return p.category !== 'Product';
       return true;
     }
@@ -31,12 +32,12 @@ export const Works: React.FC<WorksProps> = ({ filter = 'all' }) => {
         className="mb-12"
       >
         <h1 className="text-4xl font-bold text-slate-900 mb-4">
-          {filter === 'product' ? 'Products' : 'Projects & Architectures'}
+          {filter === 'product' ? content.works.titleProducts : content.works.titleProjects}
         </h1>
         <p className="text-lg text-slate-500 max-w-3xl">
           {filter === 'product' 
-            ? 'Live tools built for efficiency and creativity.' 
-            : 'Enterprise-grade systems, architectures, and AI applications delivered for impact.'}
+            ? content.works.descProducts
+            : content.works.descProjects}
         </p>
       </motion.div>
 
@@ -65,7 +66,7 @@ export const Works: React.FC<WorksProps> = ({ filter = 'all' }) => {
                 {item.image ? (
                   <img src={item.image} className="w-full h-full object-cover" alt={item.title} />
                 ) : (
-                  <div className="w-full h-full bg-slate-50 flex items-center justify-center text-slate-300">No Preview</div>
+                  <div className="w-full h-full bg-slate-50 flex items-center justify-center text-slate-300">{content.hero.noImage}</div>
                 )}
              </div>
              
@@ -84,7 +85,7 @@ export const Works: React.FC<WorksProps> = ({ filter = 'all' }) => {
                  </div>
                  {item.link && (
                    <a href={item.link} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-sm font-medium text-qy-blue hover:underline">
-                     Visit Live <ExternalLink size={14} />
+                     {content.works.visitLive} <ExternalLink size={14} />
                    </a>
                  )}
                </div>
@@ -103,7 +104,7 @@ export const Works: React.FC<WorksProps> = ({ filter = 'all' }) => {
                )}
 
                <div>
-                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Stack</h4>
+                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{content.hero.techStack}</h4>
                  <div className="flex flex-wrap gap-2">
                    {item.technologies.map(tech => (
                      <span key={tech} className="px-2 py-1 rounded-md bg-slate-50 text-xs font-medium text-slate-600 border border-slate-100">

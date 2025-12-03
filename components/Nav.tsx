@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NAV_ITEMS } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Section } from '../types';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Globe } from 'lucide-react';
 
 interface NavProps {
   activeSection: Section;
@@ -11,12 +11,17 @@ interface NavProps {
 
 export const Nav: React.FC<NavProps> = ({ activeSection, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, content } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'zh' : 'en');
+  };
 
   return (
     <header 
@@ -40,12 +45,12 @@ export const Nav: React.FC<NavProps> = ({ activeSection, onNavigate }) => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-1 bg-slate-50/50 p-1 rounded-full border border-slate-200/50">
-          {NAV_ITEMS.map((item) => {
+          {content.nav.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => onNavigate(item.id as Section)}
                 className={`relative px-5 py-1.5 text-sm font-medium rounded-full transition-all duration-300 ${
                   isActive 
                     ? 'text-slate-900' 
@@ -65,11 +70,23 @@ export const Nav: React.FC<NavProps> = ({ activeSection, onNavigate }) => {
           })}
         </nav>
 
-        {/* Mobile Menu Placeholder (Simplified) */}
-        <button className="md:hidden p-2 text-slate-600">
-          <div className="w-6 h-0.5 bg-current mb-1.5"></div>
-          <div className="w-6 h-0.5 bg-current"></div>
-        </button>
+        {/* Actions */}
+        <div className="flex items-center gap-4">
+           {/* Language Switcher */}
+           <button 
+             onClick={toggleLanguage}
+             className="flex items-center gap-1 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-1.5 rounded-full transition-colors"
+           >
+             <Globe size={14} />
+             <span>{language === 'en' ? 'EN' : '中文'}</span>
+           </button>
+
+           {/* Mobile Menu Placeholder (Simplified) */}
+           <button className="md:hidden p-2 text-slate-600">
+             <div className="w-6 h-0.5 bg-current mb-1.5"></div>
+             <div className="w-6 h-0.5 bg-current"></div>
+           </button>
+        </div>
       </div>
     </header>
   );
