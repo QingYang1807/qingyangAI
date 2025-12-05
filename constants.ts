@@ -1,4 +1,4 @@
-import { Section, Project, Advantage, Certificate, Experience } from './types';
+import { Section, Project, Advantage, Certificate, Experience, Course } from './types';
 import { Layers, Code, Cpu, Rocket, Zap, Brain, FileText, Database, Network } from 'lucide-react';
 
 export const SOCIAL_LINKS = [
@@ -11,10 +11,11 @@ Identity: Qingyang is an AI Infra & RAG Engineering Expert. He specializes in en
 Highlights:
 - **Five Haves**: Data x RAG x Agent, Ontology Modeling, Strong Engineering, Modular Architecture, Evolution.
 - **Key Products**: Qingyang Resume (resume.qingyang.ai), Qingyang Brain (brain.qingyang.ai).
-- **Experience**: Lead Architect at a Tech Startup (Ontology/Agent), AI Platform Lead at a Public Listed Tech Company (DeepSeek R1 Data, 300k+ Datasets).
+- **Experience**: Lead Architect at a Million-Dollar Angel Round Startup (Ontology/Agent), AI Platform Lead at a Top Public Listed Tech Company (DeepSeek R1 Data, 300k+ Datasets).
 - **Skills**: LangGraph, CrewAI, Java, Python, SpringCloud, Distributed Systems.
 Tone: Professional, insightful, and concise. Focus on his engineering capabilities and system design skills.`;
 
+// ... Advantages and Projects remain unchanged ...
 const ADVANTAGES_EN: Advantage[] = [
   {
     id: '1',
@@ -381,82 +382,6 @@ const PROJECTS_ZH: Project[] = [
   }
 ];
 
-const CERTIFICATES_EN: Certificate[] = [
-  {
-    id: 1,
-    title: "Annual Excellent Deliverable Award (2nd Prize)",
-    year: "2024",
-    description: "Awarded to 5 out of 3000+ employees for outstanding AI platform deliverables.",
-    category: 'professional'
-  },
-  {
-    id: 2,
-    title: "AI Full-Stack Development Certificate",
-    year: "2025",
-    description: "Systematic mastery of AI frontend/backend, model deployment, and application capabilities.",
-    category: 'ai'
-  },
-  {
-    id: 3,
-    title: "Advanced LLM RAG Certificate",
-    year: "2025",
-    description: "Advanced mastery of RAG architecture, retrieval strategies, and Agent development.",
-    category: 'ai'
-  },
-  {
-    id: 4,
-    title: "Enterprise Agent Development",
-    year: "2024",
-    description: "Mastery of CrewAI/LangGraph orchestration, multi-agent collaboration, and production deployment.",
-    category: 'ai'
-  },
-  {
-    id: 5,
-    title: "Senior Big Data Analyst",
-    year: "2024",
-    description: "Data mining and analysis modeling capabilities for complex business scenarios.",
-    category: 'professional'
-  }
-];
-
-const CERTIFICATES_ZH: Certificate[] = [
-  {
-    id: 1,
-    title: "年度优秀交付物二等奖",
-    year: "2024",
-    description: "全公司 3000+ 人中脱颖而出（仅 5 人获奖），表彰 AI 平台与应用交付成果",
-    category: 'professional'
-  },
-  {
-    id: 2,
-    title: "AI全栈开发毕业证书",
-    year: "2025",
-    description: "系统掌握 AI 前后端、模型部署与应用落地全链路能力",
-    category: 'ai'
-  },
-  {
-    id: 3,
-    title: "大模型RAG进阶毕业",
-    year: "2025",
-    description: "深入掌握 RAG 架构优化、高级检索策略与 Agent 开发",
-    category: 'ai'
-  },
-  {
-    id: 4,
-    title: "企业级Agent开发",
-    year: "2024",
-    description: "掌握 CrewAI/LangGraph 编排、多智能体协作与生产级部署",
-    category: 'ai'
-  },
-  {
-    id: 5,
-    title: "高级大数据分析师",
-    year: "2024",
-    description: "具备复杂业务场景下的数据挖掘与分析建模能力",
-    category: 'professional'
-  }
-];
-
 const EXPERIENCES_EN: Experience[] = [
   {
     id: '1',
@@ -511,9 +436,295 @@ const EXPERIENCES_ZH: Experience[] = [
   }
 ];
 
+const COURSES_EN: Record<string, Course> = {
+  'fullstack': {
+    id: 'fullstack',
+    title: "AI Full-Stack Development Camp",
+    period: "2025.05 - 2025.09",
+    description: "Comprehensive training on modern AI application development, covering Transformer architectures, DeepSeek integration, RAG systems, and commercial deployment.",
+    modules: [
+      { title: "Machine Learning & DL Basics", topics: ["Supervised/Unsupervised Learning", "Neural Networks", "Backpropagation"] },
+      { title: "Transformer & LLMs", topics: ["Attention Mechanism", "Self-Attention", "MoE", "Quantization", "Distillation"] },
+      { title: "DeepSeek Application", topics: ["Prompt Engineering", "Code Generation", "Reasoning Models (R1)"] },
+      { title: "AI App Platforms", topics: ["RAG Systems", "Dify / FastGPT", "LangBot", "Smart CS Agents"] },
+      { title: "Advanced Agentic AI", topics: ["MCP Protocol", "A2A Collaboration", "Code Agents"] }
+    ]
+  },
+  'rag-advanced': {
+    id: 'rag-advanced',
+    title: "Large Model RAG Advanced Camp",
+    period: "2025.03 - 2025.06",
+    description: "Deep dive into Retrieval-Augmented Generation, focusing on advanced indexing, retrieval strategies, evaluation frameworks, and multimodal RAG.",
+    modules: [
+      { title: "RAG Foundations", topics: ["Git/Cursor", "LlamaIndex", "Framework Design"] },
+      { title: "Data Processing", topics: ["PDF Parsing (Unstructured)", "Table Extraction", "Embedding Models"] },
+      { title: "Vector Database", topics: ["Milvus", "Hybrid Search", "Multimodal Retrieval"] },
+      { title: "Advanced Retrieval", topics: ["Text-to-SQL/Cypher", "Query Routing", "Reranking", "GraphRAG"] },
+      { title: "Evaluation & Production", topics: ["RAGas Framework", "MCP Integration", "DeepSeek R1 Fine-tuning"] }
+    ]
+  },
+  'agent-enterprise': {
+    id: 'agent-enterprise',
+    title: "Enterprise Agents Development Camp",
+    period: "2024.08 - 2024.11",
+    description: "Focusing on production-grade Agent orchestration using LangChain/LangGraph, multi-agent collaboration, and private deployment.",
+    modules: [
+      { title: "LLM Evolution", topics: ["GPT-1 to GPT-4", "Transformer Architecture"] },
+      { title: "Agent Frameworks", topics: ["GitHubSentinel", "LangChain/LangGraph", "ReAct Pattern"] },
+      { title: "Orchestration", topics: ["Multi-Agent Systems", "State Machines", "Reflection Mechanisms"] },
+      { title: "Advanced Protocols", topics: ["MCP (Model Context Protocol)", "A2A (Agent-to-Agent)"] }
+    ]
+  },
+  'fine-tuning': {
+    id: 'fine-tuning',
+    title: "AI Large Model Fine-tuning Camp",
+    period: "2023.11 - 2024.02",
+    description: "Mastering the art of model customization, from PEFT/LoRA techniques to RLHF and distilled reasoning models.",
+    modules: [
+      { title: "Fine-tuning Basics", topics: ["PEFT", "LoRA", "QLoRA", "Hugging Face Transformers"] },
+      { title: "Model Architectures", topics: ["ChatGLM3", "LLaMA 2", "MoE (Mixture of Experts)"] },
+      { title: "Advanced Training", topics: ["RLHF", "DeepSpeed Distributed Training", "Privatized Deployment"] },
+      { title: "Reasoning Models", topics: ["DeepSeek-R1 Distillation", "Instruction Tuning"] }
+    ]
+  },
+  'algorithm': {
+    id: 'algorithm',
+    title: "AI Algorithm Advanced Camp",
+    period: "2025.06 - 2025.12",
+    description: "In-depth theoretical and practical study of AI algorithms, ranging from mathematical foundations to cutting-edge generative models.",
+    modules: [
+      { title: "Math & ML Foundations", topics: ["Probability", "Data Distribution", "Linear Models", "Decision Trees"] },
+      { title: "Knowledge & Reasoning", topics: ["Symbolic AI", "Knowledge Bases", "Rule Engines"] },
+      { title: "Reinforcement Learning", topics: ["Q-Learning", "DQN", "Deep RL"] },
+      { title: "Deep Representation", topics: ["CNN (Vision)", "RNN/Transformer (NLP)", "Attention Mechanism"] },
+      { title: "Generative AI", topics: ["Diffusion Models", "CLIP", "World Models"] }
+    ]
+  },
+  'digital-human': {
+    id: 'digital-human',
+    title: "AI Agent Real-time Digital Human",
+    period: "2025.06 - 2025.07",
+    description: "Building interactive, real-time digital humans driven by advanced Agent logic and Live2D technologies.",
+    modules: [
+      { title: "Foundations", topics: ["DeepSeek R1 / Qwen3", "ADH Tool Setup"] },
+      { title: "Character Dev", topics: ["Live2D Models", "Agent SDK", "Personality Design"] },
+      { title: "Intelligence Integration", topics: ["RAG Memory", "Vector DB", "MCP Protocol"] },
+      { title: "Optimization", topics: ["Latency Reduction", "OpenManus Integration"] }
+    ]
+  }
+};
+
+const COURSES_ZH: Record<string, Course> = {
+  'fullstack': {
+    id: 'fullstack',
+    title: "AI 全栈开发实战营",
+    period: "2025.05 - 2025.09",
+    description: "系统掌握现代 AI 应用开发，覆盖 Transformer 架构、DeepSeek 集成、RAG 系统构建与商业化落地。",
+    modules: [
+      { title: "机器学习与深度学习基础", topics: ["监督/非监督学习", "神经网络架构", "反向传播"] },
+      { title: "Transformer 与大模型", topics: ["注意力机制", "MoE 混合专家", "量化与蒸馏技术"] },
+      { title: "DeepSeek 应用生态", topics: ["提示词工程", "代码生成", "R1 推理模型微调"] },
+      { title: "AI 应用开发平台", topics: ["Dify / FastGPT 实战", "LangBot 机器人", "企业级知识库"] },
+      { title: "Agent 前沿技术", topics: ["MCP 协议", "A2A 协作", "Code Agent"] }
+    ]
+  },
+  'rag-advanced': {
+    id: 'rag-advanced',
+    title: "大模型 RAG 进阶实战营",
+    period: "2025.03 - 2025.06",
+    description: "深入 RAG 检索增强生成技术，专注高级索引策略、混合检索、评估框架与多模态应用。",
+    modules: [
+      { title: "RAG 基础设施", topics: ["Git/Cursor 工具链", "LlamaIndex 框架", "自研 RAG 框架"] },
+      { title: "数据处理与解析", topics: ["PDF/表格解析", "非结构化数据清洗", "Embedding 技术"] },
+      { title: "向量数据库实战", topics: ["Milvus 部署", "混合检索", "多模态检索"] },
+      { title: "高级检索策略", topics: ["Text-to-SQL/Cypher", "查询路由", "重排 (Rerank)", "GraphRAG"] },
+      { title: "系统评估与生产", topics: ["RAGas 评估", "MCP 集成", "DeepSeek R1 微调"] }
+    ]
+  },
+  'agent-enterprise': {
+    id: 'agent-enterprise',
+    title: "企业级 Agents 开发实战营",
+    period: "2024.08 - 2024.11",
+    description: "专注于生产级 Agent 编排，掌握 LangChain/LangGraph、多智能体协作与私有化部署。",
+    modules: [
+      { title: "大模型演进", topics: ["GPT 家族", "Transformer 原理", "Attention 机制"] },
+      { title: "Agent 开发框架", topics: ["GitHubSentinel 实战", "LangChain 体系", "ReAct 模式"] },
+      { title: "高级编排技术", topics: ["LangGraph 状态机", "Multi-Agent 协作", "反思机制"] },
+      { title: "下一代协议", topics: ["MCP (模型上下文协议)", "A2A (Agent-to-Agent)"] }
+    ]
+  },
+  'fine-tuning': {
+    id: 'fine-tuning',
+    title: "AI 大模型微调训练营",
+    period: "2023.11 - 2024.02",
+    description: "精通模型定制化技术，从 PEFT/LoRA 微调到 RLHF 对齐与推理模型蒸馏。",
+    modules: [
+      { title: "微调基础技术", topics: ["PEFT", "LoRA", "QLoRA", "Hugging Face Transformers"] },
+      { title: "模型架构实战", topics: ["ChatGLM3", "LLaMA 2", "MoE 架构揭秘"] },
+      { title: "高级训练技术", topics: ["RLHF", "DeepSpeed 分布式训练", "私有化部署"] },
+      { title: "推理模型特训", topics: ["DeepSeek-R1 蒸馏", "指令微调 (Instruction Tuning)"] }
+    ]
+  },
+  'algorithm': {
+    id: 'algorithm',
+    title: "AI 算法进阶训练营",
+    period: "2025.06 - 2025.12",
+    description: "深度剖析 AI 算法理论与实践，从数学基础到前沿的生成式模型与世界模型。",
+    modules: [
+      { title: "数学与 ML 基础", topics: ["概率论", "数据分布", "线性模型", "决策树"] },
+      { title: "知识与推理", topics: ["符号主义", "知识库", "规则引擎"] },
+      { title: "强化学习 (RL)", topics: ["Q-Learning", "DQN", "深度强化学习"] },
+      { title: "深度表示学习", topics: ["CNN (视觉)", "RNN/Transformer (NLP)", "自监督学习"] },
+      { title: "生成式 AI", topics: ["扩散模型 (Diffusion)", "CLIP", "世界模型", "具身智能"] }
+    ]
+  },
+  'digital-human': {
+    id: 'digital-human',
+    title: "AI Agent 实时数字人行动营",
+    period: "2025.06 - 2025.07",
+    description: "构建由高级 Agent 逻辑驱动的实时交互数字人，结合 Live2D 与 RAG 技术。",
+    modules: [
+      { title: "基础环境搭建", topics: ["DeepSeek R1 / Qwen3", "ADH 工具链"] },
+      { title: "角色开发", topics: ["Live2D 模型集成", "Agent SDK", "个性化设计"] },
+      { title: "智能集成", topics: ["RAG 记忆库", "向量数据库", "MCP 协议"] },
+      { title: "性能优化", topics: ["低延迟优化", "OpenManus 对接", "后端集成"] }
+    ]
+  }
+};
+
+const CERTIFICATES_EN: Certificate[] = [
+  {
+    id: 1,
+    title: "Annual Excellent Deliverable Award (2nd Prize)",
+    year: "2024",
+    description: "Awarded to 5 out of 3000+ employees for outstanding AI platform deliverables.",
+    category: 'professional'
+  },
+  {
+    id: 2,
+    title: "AI Full-Stack Development Certificate",
+    year: "2025",
+    description: "Systematic mastery of AI frontend/backend, model deployment, and application capabilities.",
+    category: 'ai',
+    courseId: 'fullstack'
+  },
+  {
+    id: 3,
+    title: "Advanced LLM RAG Certificate",
+    year: "2025",
+    description: "Advanced mastery of RAG architecture, retrieval strategies, and Agent development.",
+    category: 'ai',
+    courseId: 'rag-advanced'
+  },
+  {
+    id: 4,
+    title: "Enterprise Agent Development",
+    year: "2024",
+    description: "Mastery of CrewAI/LangGraph orchestration, multi-agent collaboration, and production deployment.",
+    category: 'ai',
+    courseId: 'agent-enterprise'
+  },
+  {
+    id: 5,
+    title: "Senior Big Data Analyst",
+    year: "2024",
+    description: "Data mining and analysis modeling capabilities for complex business scenarios.",
+    category: 'professional'
+  },
+  {
+    id: 6,
+    title: "AI Large Model Fine-tuning",
+    year: "2024",
+    description: "Mastering PEFT, LoRA, RLHF, and DeepSpeed distributed training techniques.",
+    category: 'ai',
+    courseId: 'fine-tuning'
+  },
+  {
+    id: 7,
+    title: "AI Algorithm Advanced",
+    year: "2025",
+    description: "Deep dive into Mathematical foundations, RL, and Generative Models.",
+    category: 'ai',
+    courseId: 'algorithm'
+  },
+  {
+    id: 8,
+    title: "Real-time Digital Human Agent",
+    year: "2025",
+    description: "Building interactive digital humans with DeepSeek R1 and Live2D.",
+    category: 'ai',
+    courseId: 'digital-human'
+  }
+];
+
+const CERTIFICATES_ZH: Certificate[] = [
+  {
+    id: 1,
+    title: "年度优秀交付物二等奖",
+    year: "2024",
+    description: "全公司 3000+ 人中脱颖而出（仅 5 人获奖），表彰 AI 平台与应用交付成果",
+    category: 'professional'
+  },
+  {
+    id: 2,
+    title: "AI全栈开发毕业证书",
+    year: "2025",
+    description: "系统掌握 AI 前后端、模型部署与应用落地全链路能力",
+    category: 'ai',
+    courseId: 'fullstack'
+  },
+  {
+    id: 3,
+    title: "大模型RAG进阶毕业",
+    year: "2025",
+    description: "深入掌握 RAG 架构优化、高级检索策略与 Agent 开发",
+    category: 'ai',
+    courseId: 'rag-advanced'
+  },
+  {
+    id: 4,
+    title: "企业级Agent开发",
+    year: "2024",
+    description: "掌握 CrewAI/LangGraph 编排、多智能体协作与生产级部署",
+    category: 'ai',
+    courseId: 'agent-enterprise'
+  },
+  {
+    id: 5,
+    title: "高级大数据分析师",
+    year: "2024",
+    description: "具备复杂业务场景下的数据挖掘与分析建模能力",
+    category: 'professional'
+  },
+  {
+    id: 6,
+    title: "AI大模型微调训练营",
+    year: "2024",
+    description: "精通 PEFT、LoRA、RLHF 及 DeepSpeed 分布式训练技术",
+    category: 'ai',
+    courseId: 'fine-tuning'
+  },
+  {
+    id: 7,
+    title: "AI算法进阶训练营",
+    year: "2025",
+    description: "深度掌握算法数学基础、强化学习及生成式模型原理",
+    category: 'ai',
+    courseId: 'algorithm'
+  },
+  {
+    id: 8,
+    title: "实时数字人行动营",
+    year: "2025",
+    description: "基于 DeepSeek R1 与 Live2D 构建实时交互数字人 Agent",
+    category: 'ai',
+    courseId: 'digital-human'
+  }
+];
 
 export const CONTENT = {
   en: {
+    // ... existing content ...
     nav: [
       { id: 'home', label: 'Home' },
       { id: 'works', label: 'Works' },
@@ -578,9 +789,11 @@ export const CONTENT = {
     advantages: ADVANTAGES_EN,
     projects: PROJECTS_EN,
     certificates: CERTIFICATES_EN,
-    experiences: EXPERIENCES_EN
+    experiences: EXPERIENCES_EN,
+    courses: COURSES_EN
   },
   zh: {
+    // ... existing content ...
     nav: [
       { id: 'home', label: '首页' },
       { id: 'works', label: '作品' },
@@ -645,6 +858,7 @@ export const CONTENT = {
     advantages: ADVANTAGES_ZH,
     projects: PROJECTS_ZH,
     certificates: CERTIFICATES_ZH,
-    experiences: EXPERIENCES_ZH
+    experiences: EXPERIENCES_ZH,
+    courses: COURSES_ZH
   }
 };

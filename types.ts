@@ -40,6 +40,20 @@ export interface Certificate {
   description: string;
   category: 'ai' | 'professional' | 'academic';
   image?: string;
+  courseId?: string; // Link to detailed course data
+}
+
+export interface CourseModule {
+  title: string;
+  topics: string[];
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  period: string;
+  description: string;
+  modules: CourseModule[];
 }
 
 export interface Experience {
