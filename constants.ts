@@ -8,6 +8,8 @@ export const SOCIAL_LINKS = [
   { name: 'CSDN', href: 'https://blog.csdn.net/zsrsdf?type=blog' },
 ];
 
+export const WECHAT_QR_CODE = '/images/qrcode_for_gh_0453b5821be3_1280.jpg';
+
 export const SYSTEM_INSTRUCTION = `You are Qingyang's AI assistant.
 Identity: Qingyang is an AI Infra & RAG Engineering Expert. He specializes in end-to-end AI application chains (Data -> Retrieval -> Reasoning -> Orchestration -> Application).
 Highlights:

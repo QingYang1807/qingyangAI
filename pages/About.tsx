@@ -2,11 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../components/ui/Card';
 import { useLanguage } from '../contexts/LanguageContext';
-import { SOCIAL_LINKS } from '../constants';
-import { Github, Globe } from 'lucide-react';
+import { SOCIAL_LINKS, WECHAT_QR_CODE } from '../constants';
+import { Github, Globe, Code2 } from 'lucide-react';
+import { WeChatButton } from '../components/WeChatButton';
+
 
 export const About: React.FC = () => {
-  const { content } = useLanguage();
+  const { content, language } = useLanguage();
 
   return (
     <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
@@ -37,19 +39,27 @@ export const About: React.FC = () => {
                 </p>
              </div>
              
-             <div className="flex gap-4 mt-8">
+             {/* Social Links Row */}
+             <div className="flex flex-wrap items-center gap-4 mt-8">
                {SOCIAL_LINKS.map(link => (
                  <a 
                    key={link.name} 
                    href={link.href} 
                    target="_blank" 
                    rel="noreferrer"
-                   className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-slate-700 hover:bg-slate-200 transition-colors font-medium text-sm"
+                   className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-slate-700 hover:bg-slate-200 transition-colors font-medium text-sm group"
                  >
-                   {link.name === 'GitHub' ? <Github size={16}/> : <Globe size={16}/>}
-                   {link.name}
+                   {link.name === 'GitHub' ? <Github size={16}/> : 
+                    link.name === 'CSDN' ? <Code2 size={16}/> : <Globe size={16}/>}
+                   <span>{link.name}</span>
                  </a>
                ))}
+               
+               {/* WeChat Button Integrated in the same row */}
+               <WeChatButton 
+                 qrCodeImage={WECHAT_QR_CODE} 
+                 label={language === 'en' ? "WeChat Official" : "微信公众号"} 
+               />
              </div>
           </motion.div>
 
