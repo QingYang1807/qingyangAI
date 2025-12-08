@@ -1,9 +1,11 @@
+
 import { Section, Project, Advantage, Certificate, Experience, Course } from './types';
 import { Layers, Code, Cpu, Rocket, Zap, Brain, FileText, Database, Network } from 'lucide-react';
 
 export const SOCIAL_LINKS = [
   { name: 'GitHub', href: 'https://github.com/QIngYang1807' },
   { name: 'Blog', href: 'http://linqingyang.com' },
+  { name: 'CSDN', href: 'https://blog.csdn.net/zsrsdf?type=blog' },
 ];
 
 export const SYSTEM_INSTRUCTION = `You are Qingyang's AI assistant.
@@ -15,7 +17,6 @@ Highlights:
 - **Skills**: LangGraph, CrewAI, Java, Python, SpringCloud, Distributed Systems.
 Tone: Professional, insightful, and concise. Focus on his engineering capabilities and system design skills.`;
 
-// ... Advantages and Projects remain unchanged ...
 const ADVANTAGES_EN: Advantage[] = [
   {
     id: '1',
@@ -592,13 +593,15 @@ const COURSES_ZH: Record<string, Course> = {
   }
 };
 
+// SORTED BY LATEST END DATE
 const CERTIFICATES_EN: Certificate[] = [
   {
-    id: 1,
-    title: "Annual Excellent Deliverable Award (2nd Prize)",
-    year: "2024",
-    description: "Awarded to 5 out of 3000+ employees for outstanding AI platform deliverables.",
-    category: 'professional'
+    id: 7,
+    title: "AI Algorithm Advanced",
+    year: "2025",
+    description: "Deep dive into Mathematical foundations, RL, and Generative Models.",
+    category: 'ai',
+    courseId: 'algorithm'
   },
   {
     id: 2,
@@ -607,6 +610,14 @@ const CERTIFICATES_EN: Certificate[] = [
     description: "Systematic mastery of AI frontend/backend, model deployment, and application capabilities.",
     category: 'ai',
     courseId: 'fullstack'
+  },
+  {
+    id: 8,
+    title: "Real-time Digital Human Agent",
+    year: "2025",
+    description: "Building interactive digital humans with DeepSeek R1 and Live2D.",
+    category: 'ai',
+    courseId: 'digital-human'
   },
   {
     id: 3,
@@ -625,6 +636,13 @@ const CERTIFICATES_EN: Certificate[] = [
     courseId: 'agent-enterprise'
   },
   {
+    id: 1,
+    title: "Annual Excellent Deliverable Award (2nd Prize)",
+    year: "2024",
+    description: "Awarded to 5 out of 3000+ employees for outstanding AI platform deliverables.",
+    category: 'professional'
+  },
+  {
     id: 5,
     title: "Senior Big Data Analyst",
     year: "2024",
@@ -638,32 +656,18 @@ const CERTIFICATES_EN: Certificate[] = [
     description: "Mastering PEFT, LoRA, RLHF, and DeepSpeed distributed training techniques.",
     category: 'ai',
     courseId: 'fine-tuning'
-  },
-  {
-    id: 7,
-    title: "AI Algorithm Advanced",
-    year: "2025",
-    description: "Deep dive into Mathematical foundations, RL, and Generative Models.",
-    category: 'ai',
-    courseId: 'algorithm'
-  },
-  {
-    id: 8,
-    title: "Real-time Digital Human Agent",
-    year: "2025",
-    description: "Building interactive digital humans with DeepSeek R1 and Live2D.",
-    category: 'ai',
-    courseId: 'digital-human'
   }
 ];
 
+// SORTED BY LATEST END DATE
 const CERTIFICATES_ZH: Certificate[] = [
   {
-    id: 1,
-    title: "年度优秀交付物二等奖",
-    year: "2024",
-    description: "全公司 3000+ 人中脱颖而出（仅 5 人获奖），表彰 AI 平台与应用交付成果",
-    category: 'professional'
+    id: 7,
+    title: "AI算法进阶训练营",
+    year: "2025",
+    description: "深度掌握算法数学基础、强化学习及生成式模型原理",
+    category: 'ai',
+    courseId: 'algorithm'
   },
   {
     id: 2,
@@ -672,6 +676,14 @@ const CERTIFICATES_ZH: Certificate[] = [
     description: "系统掌握 AI 前后端、模型部署与应用落地全链路能力",
     category: 'ai',
     courseId: 'fullstack'
+  },
+  {
+    id: 8,
+    title: "实时数字人行动营",
+    year: "2025",
+    description: "基于 DeepSeek R1 与 Live2D 构建实时交互数字人 Agent",
+    category: 'ai',
+    courseId: 'digital-human'
   },
   {
     id: 3,
@@ -690,6 +702,13 @@ const CERTIFICATES_ZH: Certificate[] = [
     courseId: 'agent-enterprise'
   },
   {
+    id: 1,
+    title: "年度优秀交付物二等奖",
+    year: "2024",
+    description: "全公司 3000+ 人中脱颖而出（仅 5 人获奖），表彰 AI 平台与应用交付成果",
+    category: 'professional'
+  },
+  {
     id: 5,
     title: "高级大数据分析师",
     year: "2024",
@@ -703,22 +722,6 @@ const CERTIFICATES_ZH: Certificate[] = [
     description: "精通 PEFT、LoRA、RLHF 及 DeepSpeed 分布式训练技术",
     category: 'ai',
     courseId: 'fine-tuning'
-  },
-  {
-    id: 7,
-    title: "AI算法进阶训练营",
-    year: "2025",
-    description: "深度掌握算法数学基础、强化学习及生成式模型原理",
-    category: 'ai',
-    courseId: 'algorithm'
-  },
-  {
-    id: 8,
-    title: "实时数字人行动营",
-    year: "2025",
-    description: "基于 DeepSeek R1 与 Live2D 构建实时交互数字人 Agent",
-    category: 'ai',
-    courseId: 'digital-human'
   }
 ];
 
