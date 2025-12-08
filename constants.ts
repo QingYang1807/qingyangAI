@@ -8,6 +8,7 @@ export const SOCIAL_LINKS = [
   { name: 'CSDN', href: 'https://blog.csdn.net/zsrsdf?type=blog' },
 ];
 
+// Path to the image in public/images folder
 export const WECHAT_QR_CODE = '/images/qrcode_for_gh_0453b5821be3_1280.jpg';
 
 export const SYSTEM_INSTRUCTION = `You are Qingyang's AI assistant.
@@ -729,7 +730,6 @@ const CERTIFICATES_ZH: Certificate[] = [
 
 export const CONTENT = {
   en: {
-    // ... existing content ...
     nav: [
       { id: 'home', label: 'Home' },
       { id: 'works', label: 'Works' },
@@ -798,7 +798,6 @@ export const CONTENT = {
     courses: COURSES_EN
   },
   zh: {
-    // ... existing content ...
     nav: [
       { id: 'home', label: '首页' },
       { id: 'works', label: '作品' },

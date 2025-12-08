@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, ImageOff } from 'lucide-react';
 
 interface WeChatButtonProps {
   qrCodeImage: string;
@@ -10,6 +11,7 @@ interface WeChatButtonProps {
 export const WeChatButton: React.FC<WeChatButtonProps> = ({ qrCodeImage, label }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -68,18 +70,21 @@ export const WeChatButton: React.FC<WeChatButtonProps> = ({ qrCodeImage, label }
               <div className="text-sm text-slate-500 text-center mb-2 font-medium whitespace-nowrap">
                 {isClicked ? (label === '微信公众号' ? '已固定显示' : 'Pinned') : (label === '微信公众号' ? '扫码关注' : 'Scan to Follow')}
               </div>
-              <div className="flex justify-center items-center bg-slate-50 rounded-lg overflow-hidden p-1">
-                <img 
-                  src={qrCodeImage} 
-                  alt="WeChat QR Code" 
-                  className="w-full h-auto rounded"
-                  style={{ objectFit: 'contain' }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    // Fallback placeholder
-                    target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23f1f5f9"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%2394a3b8" font-size="14"%3EQR Error%3C/text%3E%3C/svg%3E';
-                  }}
-                />
+              <div className="flex justify-center items-center bg-slate-50 rounded-lg overflow-hidden p-1 min-h-[200px]">
+                {!imgError ? (
+                  <img 
+                    src={qrCodeImage} 
+                    alt="WeChat QR Code" 
+                    className="w-full h-auto rounded"
+                    style={{ objectFit: 'contain' }}
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center p-8 text-slate-400 gap-2">
+                     <ImageOff size={32} />
+                     <span className="text-xs text-center">Image not found</span>
+                  </div>
+                )}
               </div>
             </div>
             {/* Arrow */}
