@@ -39,12 +39,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                         </span>
                     </h1>
 
-                    <p className="text-xl text-slate-500 max-w-lg mb-10 leading-relaxed font-light">
+                    <p className="text-xl text-slate-500 max-w-lg mb-8 leading-relaxed font-light">
                         {content.hero.description} <br />
                         <span className="text-slate-900 font-medium">Data</span> →
                         <span className="text-slate-900 font-medium"> RAG</span> →
                         <span className="text-slate-900 font-medium"> Agent</span>
                     </p>
+
+                    {/* Keywords Summary */}
+                    <div className="mb-10 text-xs font-bold tracking-widest text-slate-400 uppercase max-w-lg leading-relaxed">
+                        {/* @ts-ignore - keywords added recently */}
+                        {content.hero.keywords}
+                    </div>
+
 
                     <div className="flex flex-wrap gap-4">
                         <Button onClick={() => onNavigate('works')} className="h-14 px-8 text-lg">

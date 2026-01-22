@@ -1,5 +1,5 @@
 
-import { Section, Project, Advantage, Certificate, Experience, Course } from './types';
+import { Section, Project, Advantage, Certificate, Experience, Course, SkillCategory, Differentiator } from './types';
 import { Layers, Code, Cpu, Rocket, Zap, Brain, FileText, Database, Network } from 'lucide-react';
 
 export const SOCIAL_LINKS = [
@@ -728,6 +728,162 @@ const CERTIFICATES_ZH: Certificate[] = [
   }
 ];
 
+// Skill Matrix Data - Core Engineering (前4个) + System-Level Skills (后4个)
+const SKILLS_EN: SkillCategory[] = [
+  {
+    id: 'agent',
+    title: 'Agent & Orchestration',
+    level: 95,
+    description: 'LangGraph / FSM / DAG driven multi-agent orchestration. Agent lifecycle management: planning → execution → feedback → reflection → evolution.',
+    tags: ['LangGraph', 'FSM', 'Multi-Agent', 'AgentOps']
+  },
+  {
+    id: 'rag',
+    title: 'RAG & Retrieval Optimization',
+    level: 92,
+    description: 'Chunking strategies, Dense/Sparse/Hybrid Retrieval, Query Rewrite, HyDE, Vector DB (Milvus/FAISS/ES), RAG evaluation & hallucination control.',
+    tags: ['RAG', 'Retrieval Optimization', 'Vector DB', 'Evaluation']
+  },
+  {
+    id: 'ontology',
+    title: 'Ontology & Knowledge Graph',
+    level: 88,
+    description: 'Ontology-driven Agent design, knowledge structuring, semantic alignment, entity-relationship modeling, Graph + RAG fusion architecture.',
+    tags: ['Ontology', 'Knowledge Graph', 'Semantic Modeling']
+  },
+  {
+    id: 'java',
+    title: 'Java & Distributed Systems',
+    level: 90,
+    description: '5+ years Java backend development. High concurrency, high availability, distributed architecture, microservices, task scheduling, message queues.',
+    tags: ['Java', 'Distributed Systems', 'High Concurrency']
+  },
+  {
+    id: 'system-design',
+    title: 'System Design',
+    level: 90,
+    description: 'From business goals → system boundaries → architecture decomposition → technology selection. Covering functional, data, technical, and deployment architectures.',
+    tags: ['Architecture', 'Scalability', 'Tech Selection']
+  },
+  {
+    id: 'data-pipeline',
+    title: 'Data Pipeline & DAG',
+    level: 92,
+    description: 'DataOps / AI dataset pipeline design. Airflow / DAG orchestration. Data collection → cleaning → labeling → augmentation → feedback loop.',
+    tags: ['DataOps', 'Airflow', 'DAG', 'ETL']
+  },
+  {
+    id: 'productization',
+    title: 'Productization & Engineering',
+    level: 88,
+    description: 'AI prototype → deliverable product. Configurable, modular, low-code/visual design. Multi-model adaptation & enterprise deployment.',
+    tags: ['Product', 'Modular', 'Enterprise Deployment']
+  },
+  {
+    id: 'leadership',
+    title: 'Team & Technical Leadership',
+    level: 85,
+    description: 'Platform lead / tech lead experience. Technical solution delivery, team collaboration, cross-department communication.',
+    tags: ['Tech Lead', 'Team Building', 'Communication']
+  }
+];
+
+const SKILLS_ZH: SkillCategory[] = [
+  {
+    id: 'agent',
+    title: 'Agent & 编排',
+    level: 95,
+    description: 'LangGraph / FSM / DAG 驱动的多智能体编排。Agent 生命周期管理：规划 → 执行 → 反馈 → 复盘 → 演化。',
+    tags: ['LangGraph', 'FSM', 'Multi-Agent', 'AgentOps']
+  },
+  {
+    id: 'rag',
+    title: 'RAG & 检索优化',
+    level: 92,
+    description: 'Chunking 策略、Dense/Sparse/Hybrid 检索、Query Rewrite、HyDE、向量数据库（Milvus/FAISS/ES）、RAG 评估与幻觉控制。',
+    tags: ['RAG', '检索优化', 'Vector DB', '评估']
+  },
+  {
+    id: 'ontology',
+    title: '本体 & 知识图谱',
+    level: 88,
+    description: '本体驱动的 Agent 设计、知识结构化、语义对齐、实体关系建模、图 + RAG 融合架构。',
+    tags: ['Ontology', 'Knowledge Graph', '语义建模']
+  },
+  {
+    id: 'java',
+    title: 'Java & 分布式系统',
+    level: 90,
+    description: '5+ 年 Java 后端开发。高并发、高可用、分布式架构设计、微服务、任务调度、消息队列、缓存体系。',
+    tags: ['Java', '分布式系统', '高并发']
+  },
+  {
+    id: 'system-design',
+    title: '系统设计',
+    level: 90,
+    description: '从业务目标 → 系统边界 → 架构拆解 → 技术选型。覆盖功能架构、数据架构、技术架构、部署架构。',
+    tags: ['架构设计', '可扩展性', '技术选型']
+  },
+  {
+    id: 'data-pipeline',
+    title: '数据流水线 & DAG',
+    level: 92,
+    description: 'DataOps / AI 数据集流水线设计。Airflow / DAG 编排。数据采集 → 清洗 → 标注 → 增强 → 回流。',
+    tags: ['DataOps', 'Airflow', 'DAG', 'ETL']
+  },
+  {
+    id: 'productization',
+    title: '产品化 & 工程落地',
+    level: 88,
+    description: 'AI 原型 → 可交付产品。配置化、模块化、低代码/可视化设计。多模型适配与企业级部署。',
+    tags: ['产品化', '模块化', '企业部署']
+  },
+  {
+    id: 'leadership',
+    title: '团队与技术领导力',
+    level: 85,
+    description: '平台负责人 / 技术负责人角色。技术方案输出、团队协作、跨部门沟通。',
+    tags: ['Tech Lead', '团队建设', '沟通协调']
+  }
+];
+
+// Differentiators - What makes you uniquely valuable
+const DIFFERENTIATORS_EN: Differentiator[] = [
+  {
+    id: 'triple-stack',
+    title: 'Agent × RAG × DataOps Triple-Stack Fusion',
+    description: 'Not just using frameworks, but solving process problems with Agent, knowledge problems with RAG, and data quality & scale problems with DataOps. A rare combination in the market.'
+  },
+  {
+    id: 'system-thinking',
+    title: 'From "Playing with Models" to "Building Systems"',
+    description: 'Focus not on model power, but on: Can it run long-term? Can ordinary people use it? Can it continuously generate value? Can it become a product and asset?'
+  },
+  {
+    id: 'real-experience',
+    title: 'Hard-earned Engineering Experience',
+    description: 'Built enterprise data platforms, AI data pipelines, Agent automation systems, multi-modal processing (text/image/audio/video), and private/offline/complex deployments. Not demos, but systems people actually use.'
+  }
+];
+
+const DIFFERENTIATORS_ZH: Differentiator[] = [
+  {
+    id: 'triple-stack',
+    title: 'Agent × RAG × DataOps 三栈融合能力',
+    description: '不是只会用某一个框架，而是能用 Agent 解决流程问题、用 RAG 解决知识问题、用 DataOps 解决数据质量与规模问题。这是市场上极少数人真正具备的组合。'
+  },
+  {
+    id: 'system-thinking',
+    title: '从"玩模型"到"做系统"',
+    description: '关注的不是模型多强，而是：能不能长期运行？能不能被普通人使用？能不能持续产出价值？能不能形成产品与资产？'
+  },
+  {
+    id: 'real-experience',
+    title: '工程真实感 (Hard-earned Experience)',
+    description: '做过企业级数据平台、AI 数据处理流水线、Agent 自动化系统、多模态数据处理（文本/图像/音频/视频）、私有化/离线/复杂环境部署。不是 Demo，而是"上线后还要有人用"的系统。'
+  }
+];
+
 export const CONTENT = {
   en: {
     nav: [
@@ -739,7 +895,7 @@ export const CONTENT = {
       { id: 'about', label: 'About' },
     ],
     hero: {
-      tag: "AI Infra • RAG • Agent Orchestration",
+      tag: "AI Agent & DataOps Platform Architect",
       title1: "Building the",
       title2: "Intelligent Infrastructure",
       description: "Constructing end-to-end AI application chains:",
@@ -751,7 +907,8 @@ export const CONTENT = {
       viewAll: "View All",
       noImage: "No Image",
       techStack: "Tech Stack",
-      toastPrivate: "Internal Enterprise Project - Not Publicly Available"
+      toastPrivate: "Internal Enterprise Project - Not Publicly Available",
+      keywords: "Agent Orchestration · RAG Optimization · AI DataOps · System Architecture · Production Engineering"
     },
     works: {
       titleProjects: "Projects & Architectures",
@@ -776,9 +933,10 @@ export const CONTENT = {
     },
     about: {
       name: "Qingyang",
-      role: "AI Infrastructure & RAG Engineering Specialist.",
+      role: "AI Agent & DataOps Platform Architect",
+      roleDesc: "Specializing in Agent Orchestration, RAG Systems, and AI Dataset Engineering. Complete experience from 0→1 architecture design, 1→N productization, to production-grade engineering and scaling.",
       intro1: "My expertise lies in building the complete AI application lifecycle:",
-      intro2: "I possess a unique fusion of capabilities: **Data Platform x RAG x Agent Workflow**. I have architected enterprise-level data platforms supporting 300+ AI scenes and millions of data points, and engineered sophisticated Agent orchestration engines using LangGraph and Ontology modeling.",
+      intro2: "I possess a unique fusion of capabilities: **Agent × RAG × DataOps Triple-Stack**. I have architected enterprise-level data platforms supporting 300+ AI scenes and millions of data points, and engineered sophisticated Agent orchestration engines using LangGraph and Ontology modeling.",
       intro3: "I focus on turning complex algorithms into scalable, stable, and explainable engineering solutions.",
       impactTitle: "Impact",
       stats: [
@@ -789,13 +947,16 @@ export const CONTENT = {
       expTitle: "Professional Experience",
       skillsTitle: "Skill Matrix",
       coreEng: "Core Engineering",
-      capabilities: "Capabilities"
+      capabilities: "System-Level Skills",
+      differentiatorTitle: "What Makes Me Unique"
     },
     advantages: ADVANTAGES_EN,
     projects: PROJECTS_EN,
     certificates: CERTIFICATES_EN,
     experiences: EXPERIENCES_EN,
-    courses: COURSES_EN
+    courses: COURSES_EN,
+    skills: SKILLS_EN,
+    differentiators: DIFFERENTIATORS_EN
   },
   zh: {
     nav: [
@@ -807,7 +968,7 @@ export const CONTENT = {
       { id: 'about', label: '关于' },
     ],
     hero: {
-      tag: "AI 基础设施 • RAG • Agent 编排",
+      tag: "AI Agent & DataOps 平台架构师",
       title1: "构建",
       title2: "智能基础设施",
       description: "构建端到端 AI 应用链路：",
@@ -819,7 +980,8 @@ export const CONTENT = {
       viewAll: "查看全部",
       noImage: "暂无图片",
       techStack: "技术栈",
-      toastPrivate: "企业内部项目 - 暂不对外开放"
+      toastPrivate: "企业内部项目 - 暂不对外开放",
+      keywords: "Agent Orchestration · RAG Optimization · AI DataOps · System Architecture · Production Engineering"
     },
     works: {
       titleProjects: "项目与架构",
@@ -844,9 +1006,10 @@ export const CONTENT = {
     },
     about: {
       name: "清扬",
-      role: "AI 基础设施 & RAG 工程专家",
+      role: "AI Agent & DataOps 平台架构师",
+      roleDesc: "专注于 Agent 编排、RAG 系统、AI 数据集工程化。具备从 0 → 1 架构设计、1 → N 产品化、工程级落地与规模化运行的完整经验。",
       intro1: "专精于构建 AI 应用的全生命周期链路：",
-      intro2: "具备独特的 **数据平台 x RAG x Agent 工作流** 三栈融合能力。主导构建了支撑 300+ AI 场景的企业级数据平台，并使用 LangGraph 和本体建模设计了复杂的 Agent 编排引擎。",
+      intro2: "具备独特的 **Agent × RAG × DataOps 三栈融合能力**。主导构建了支撑 300+ AI 场景的企业级数据平台，并使用 LangGraph 和本体建模设计了复杂的 Agent 编排引擎。",
       intro3: "专注于将复杂的算法转化为可扩展、稳定且可解释的工程解决方案。",
       impactTitle: "影响力",
       stats: [
@@ -856,13 +1019,16 @@ export const CONTENT = {
       ],
       expTitle: "专业经历",
       skillsTitle: "技能矩阵",
-      coreEng: "核心工程",
-      capabilities: "综合能力"
+      coreEng: "核心工程能力",
+      capabilities: "系统级综合能力",
+      differentiatorTitle: "核心差异化能力"
     },
     advantages: ADVANTAGES_ZH,
     projects: PROJECTS_ZH,
     certificates: CERTIFICATES_ZH,
     experiences: EXPERIENCES_ZH,
-    courses: COURSES_ZH
+    courses: COURSES_ZH,
+    skills: SKILLS_ZH,
+    differentiators: DIFFERENTIATORS_ZH
   }
 };

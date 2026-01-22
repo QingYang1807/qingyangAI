@@ -70,3 +70,17 @@ export interface ChatMessage {
   text: string;
   timestamp: number;
 }
+
+export interface SkillCategory {
+  id: string;
+  title: string;
+  level: number;
+  description: string;
+  tags: string[];
+}
+
+export interface Differentiator {
+  id: string;
+  title: string;
+  description: string;
+}
