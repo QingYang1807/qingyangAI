@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Card } from '../components/ui/Card';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SOCIAL_LINKS, WECHAT_QR_CODE } from '../constants';
-import { Github, Globe, Code2, Cpu, Zap, Star, Award } from 'lucide-react';
+import { Github, Globe, Code2, Cpu, Zap, Star, Award, Terminal, Hash, Activity } from 'lucide-react';
 import { WeChatButton } from '../components/WeChatButton';
 import { SkillCategory } from '../types';
 import { RadarChart } from '../components/ui/RadarChart';
@@ -133,7 +133,7 @@ export const About: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Skills Matrix (Charts + Cards) */}
+      {/* Geeky Skills Matrix (Charts + Cards) */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -142,23 +142,50 @@ export const About: React.FC = () => {
       >
         <div className="flex items-center gap-4 mb-10">
           <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
-            <Cpu size={24} />
+            <Terminal size={24} />
           </div>
-          <h2 className="text-3xl font-bold text-slate-900">{content.about.skillsTitle || "Skill Matrix"}</h2>
+          <div className="flex flex-col">
+            <h2 className="text-3xl font-bold text-slate-900 font-mono tracking-tighter">
+              {">"} SYSTEM.SKILLS_MATRIX
+            </h2>
+            <span className="text-xs font-mono text-slate-400">Loading module data... [DONE]</span>
+          </div>
         </div>
 
-        {/* Radar Charts Row */}
+        {/* HUD Style Radar Charts Row */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div className="flex flex-col items-center">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">{content.about.coreEng}</h3>
-            <div className="bg-slate-50 rounded-full p-4 border border-slate-100">
-              <RadarChart data={coreSkillsData} color="#3b82f6" size={320} />
+          <div className="flex flex-col items-center relative group">
+            <h3 className="text-sm font-bold font-mono text-slate-500 mb-6 flex items-center gap-2">
+              <Activity size={14} className="animate-pulse text-qy-blue" />
+              {content.about.coreEng}
+            </h3>
+            <div className="relative">
+              {/* HUD Rings Decoration */}
+              <div className="absolute inset-0 border-2 border-dashed border-slate-200 rounded-full animate-[spin_10s_linear_infinite] opacity-50"></div>
+              <div className="absolute -inset-4 border border-slate-100 rounded-full opacity-50"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-[10px] text-slate-300 font-mono bg-white px-1">N</div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 text-[10px] text-slate-300 font-mono bg-white px-1">S</div>
+
+              <div className="bg-slate-50/50 rounded-full p-4 border border-slate-200 backdrop-blur-sm relative z-10">
+                <RadarChart data={coreSkillsData} color="#3b82f6" size={320} />
+              </div>
             </div>
           </div>
-          <div className="flex flex-col items-center">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">{content.about.capabilities}</h3>
-            <div className="bg-slate-50 rounded-full p-4 border border-slate-100">
-              <RadarChart data={systemSkillsData} color="#10b981" size={320} />
+
+          <div className="flex flex-col items-center relative group">
+            <h3 className="text-sm font-bold font-mono text-slate-500 mb-6 flex items-center gap-2">
+              <Cpu size={14} className="animate-pulse text-emerald-500" />
+              {content.about.capabilities}
+            </h3>
+            <div className="relative">
+              {/* HUD Rings Decoration */}
+              <div className="absolute inset-0 border-2 border-dashed border-slate-200 rounded-full animate-[spin_12s_linear_infinite_reverse] opacity-50"></div>
+              <div className="absolute -inset-4 border border-slate-100 rounded-full opacity-50"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
+
+              <div className="bg-slate-50/50 rounded-full p-4 border border-slate-200 backdrop-blur-sm relative z-10">
+                <RadarChart data={systemSkillsData} color="#10b981" size={320} />
+              </div>
             </div>
           </div>
         </div>
@@ -166,24 +193,32 @@ export const About: React.FC = () => {
         <div className="space-y-16">
           {/* Core Engineering Details */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 border-l-4 border-qy-blue pl-4">
-              {content.about.coreEng} - Details
-            </h3>
+            <div className="flex items-center gap-2 mb-8 border-b border-slate-200 pb-2">
+              <div className="w-1 h-4 bg-qy-blue"></div>
+              <h3 className="text-sm font-bold font-mono uppercase tracking-widest text-slate-500">
+                // {content.about.coreEng}
+              </h3>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-6">
-              {content.skills.slice(0, 4).map(skill => (
-                <SkillCard key={skill.id} skill={skill} />
+              {content.skills.slice(0, 4).map((skill, idx) => (
+                <GeekSkillCard key={skill.id} skill={skill} index={idx + 1} />
               ))}
             </div>
           </div>
 
           {/* System Level Details */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 border-l-4 border-emerald-500 pl-4">
-              {content.about.capabilities} - Details
-            </h3>
+            <div className="flex items-center gap-2 mb-8 border-b border-slate-200 pb-2">
+              <div className="w-1 h-4 bg-emerald-500"></div>
+              <h3 className="text-sm font-bold font-mono uppercase tracking-widest text-slate-500">
+                // {content.about.capabilities}
+              </h3>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-6">
-              {content.skills.slice(4, 8).map(skill => (
-                <SkillCard key={skill.id} skill={skill} />
+              {content.skills.slice(4, 8).map((skill, idx) => (
+                <GeekSkillCard key={skill.id} skill={skill} index={idx + 5} />
               ))}
             </div>
           </div>
@@ -237,35 +272,71 @@ export const About: React.FC = () => {
   );
 };
 
-// Enhanced Skill Card Component
-const SkillCard = ({ skill }: { skill: SkillCategory }) => {
+// Geeky Skill Card Component
+const GeekSkillCard = ({ skill, index }: { skill: SkillCategory, index: number }) => {
+  const isHighLevel = skill.level >= 90;
+  const barColor = isHighLevel ? 'bg-qy-blue' : skill.level >= 80 ? 'bg-emerald-500' : 'bg-purple-500';
+  const borderColor = isHighLevel ? 'group-hover:border-qy-blue' : skill.level >= 80 ? 'group-hover:border-emerald-500' : 'group-hover:border-purple-500';
+
   return (
-    <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all group">
-      <div className="flex justify-between items-start mb-4">
-        <h4 className="font-bold text-slate-900 text-lg">{skill.title}</h4>
-        <div className="flex items-center gap-1 bg-slate-50 px-2 py-1 rounded-lg">
-          <span className="font-bold text-slate-700 text-sm">{skill.level}%</span>
+    <div className={`relative bg-slate-50/50 border border-slate-200 p-6 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${borderColor}`}>
+
+      {/* Tech Decorative Corners */}
+      <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-slate-300 transition-colors duration-300 group-hover:border-inherit" />
+      <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-slate-300 transition-colors duration-300 group-hover:border-inherit" />
+      <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-slate-300 transition-colors duration-300 group-hover:border-inherit" />
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-slate-300 transition-colors duration-300 group-hover:border-inherit" />
+
+      {/* Header Info */}
+      <div className="flex justify-between items-center mb-3 font-mono text-[10px] text-slate-400 uppercase tracking-widest">
+        <span className="flex items-center gap-1">
+          <Hash size={10} /> MOD_{index.toString().padStart(2, '0')}
+        </span>
+        <span className="flex items-center gap-1">
+          {isHighLevel ? 'STATUS: OPTIMIZED' : 'STATUS: STABLE'}
+          <div className={`w-1.5 h-1.5 rounded-full ${isHighLevel ? 'bg-qy-blue animate-pulse' : 'bg-emerald-400'}`}></div>
+        </span>
+      </div>
+
+      {/* Title & Level */}
+      <div className="flex justify-between items-end mb-5">
+        <h4 className="font-bold text-slate-800 text-lg font-mono tracking-tight group-hover:text-black transition-colors">
+          {skill.title}
+        </h4>
+        <div className="flex items-baseline gap-1">
+          <span className={`text-2xl font-black font-mono ${isHighLevel ? 'text-qy-blue' : 'text-slate-700'}`}>
+            {skill.level}
+          </span>
+          <span className="text-xs font-mono text-slate-400">%</span>
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="w-full bg-slate-100 rounded-full h-1.5 mb-4 overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className={`h-full rounded-full ${skill.level >= 90 ? 'bg-qy-blue' : skill.level >= 80 ? 'bg-emerald-500' : 'bg-purple-500'}`}
-        />
+      {/* Segmented Progress Bar */}
+      <div className="flex gap-0.5 h-2 mb-5">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className={`flex-1 rounded-sm transition-all duration-500 ${(i / 20) * 100 < skill.level
+                ? `${barColor} opacity-100`
+                : 'bg-slate-200 opacity-30'
+              }`}
+            style={{
+              transitionDelay: `${i * 20}ms`
+            }}
+          />
+        ))}
       </div>
 
-      <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all">
-        {skill.description}
+      {/* Description */}
+      <p className="text-xs text-slate-600 font-mono leading-relaxed mb-5 h-12 overflow-hidden">
+        {">"} {skill.description}
       </p>
 
+      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {skill.tags.map(tag => (
-          <span key={tag} className="text-xs px-2 py-1 bg-slate-50 text-slate-500 rounded border border-slate-100">
-            {tag}
+          <span key={tag} className="text-[10px] font-mono border border-slate-200 px-1.5 py-0.5 text-slate-500 uppercase bg-white group-hover:border-slate-300 transition-colors">
+            #{tag}
           </span>
         ))}
       </div>
